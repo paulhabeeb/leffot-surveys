@@ -1,0 +1,24 @@
+.button {
+    background-color: var(--color-primary);
+    border: 0;
+    display: inline-block;
+    font-size: var(--font-size-medium);
+    font-weight: var(--font-weight-sans-bold);
+    color: var(--color-white);
+    padding: var(--spacing-half) 1.25rem;
+    text-decoration: none;
+    transition: all 200ms ease;
+    
+    &.isDisabled {
+        background-color: var(--color-medium-grey);
+        cursor: not-allowed;
+        
+        &:hover {
+            background-color: var(--color-medium-grey);
+        }
+    }
+    
+    &:hover {
+        background-color: var(--color-primary-light);
+    }
+}

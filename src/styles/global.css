@@ -1,0 +1,140 @@
+:root {
+    --color-white: #ffffff;
+    --color-lightest-grey: #f8f8f8;
+    --color-lighter-grey: #f1f1f1;
+    --color-light-grey: #e1e1e1;
+    --color-medium-grey: #979797;
+    --color-dark-grey: #545454;
+    --color-not-black-light: #3c3c3c;
+    --color-not-black: #222222;
+    --color-paleGold: #eeece6;
+    --color-red: #c11;
+    --color-redDark: #A80300;
+    --color-redDarkest: #750000;
+    --color-primary: #947000;
+    --color-primary-light: #ac8301;
+    --color-primary-dark: #826200;
+    --color-secondary: #545454;
+    --color-secondary-light: #6e6e6e;
+    --dotted-outline: 1px dotted var(--color-not-black);
+    --font-serif: Calluna, Georgia, "Times New Roman", serif;
+    --font-sans: proxima-nova, "Proxima Nova", Helvetica, Arial, sans-serif;
+    --font-size-base: 1rem;
+    --font-size-hero: 64px;
+    --font-size-huge: 48px;
+    --font-size-xl: 40px;
+    --font-size-largest: 32px;
+    --font-size-larger: 28px;
+    --font-size-large: 24px;
+    --font-size-medium-large: 22px;
+    --font-size-medium: 20px;
+    --font-size-medium-small: 18px;
+    --font-size-normal: 16px;
+    --font-size-small: 14px;
+    --font-size-smaller: 12px;
+    --font-size-tiny: 10px;
+    --font-weight-serif-normal: 400;
+    --font-weight-serif-bold: 500;
+    --font-weight-sans-normal: 400;
+    --font-weight-sans-medium: 500;
+    --font-weight-sans-bold: 600;
+    --spacing-triple: 4.5rem;
+    --spacing-double: 3rem;
+    --spacing-single: 1.5rem;
+    --spacing-two-thirds: 1rem;
+    --spacing-half: .75rem;
+    --spacing-third: .5rem;
+    --spacing-quarter: .375rem;
+    --spacing-sixth: .25rem;
+    --spacing-eighth: .1875rem;
+}
+
+html, body, div, span, applet, object, iframe,
+h1, h2, h3, h4, h5, h6, p, blockquote, pre,
+a, abbr, acronym, address, big, cite, code,
+del, dfn, em, img, ins, kbd, q, s, samp,
+small, strike, strong, sub, sup, tt, var,
+b, u, i, center,
+dl, dt, dd, ol, ul, li,
+fieldset, form, label, legend,
+table, caption, tbody, tfoot, thead, tr, th, td,
+article, aside, canvas, details, embed,
+figure, figcaption, footer, header, hgroup,
+menu, nav, output, ruby, section, summary,
+time, mark, audio, video {
+    margin: 0;
+    padding: 0;
+    border: 0;
+    font-size: 100%;
+    vertical-align: baseline;
+    box-sizing: border-box;
+}
+
+/* HTML5 display-role reset for older browsers */
+article, aside, details, figcaption, figure,
+footer, header, hgroup, menu, nav, section {
+    display: block;
+}
+
+body {
+    color: var(--color-not-black);
+    font-family: var(--font-sans);
+    line-height: 1.5;
+    -moz-osx-font-smoothing: grayscale;
+}
+
+h1, h2, h3, h4, h5, h6 {
+    letter-spacing: .25px;
+}
+
+a {
+    color: var(--color-primary);
+    text-decoration: underline;
+}
+
+ol, ul {
+    list-style: none;
+}
+
+blockquote, q {
+    quotes: none;
+}
+
+blockquote:before, blockquote:after,
+q:before, q:after {
+    content: '';
+    content: none;
+}
+
+button {
+    background: 0 0;
+    border: 0;
+    cursor: pointer;
+    -webkit-appearance: button;
+}
+
+table {
+    border-collapse: collapse;
+    border-spacing: 0;
+}
+
+input, textarea, button {
+    box-sizing: border-box;
+    font-family: var(--font-sans);
+}
+
+img {
+    height: auto;
+    width: 100%;
+}
+
+.visuallyHidden {
+    border: 0;
+    clip: rect(0 0 0 0);
+    height: 1px;
+    margin: -1px;
+    overflow: hidden;
+    padding: 0;
+    position: absolute;
+    width: 1px;
+}

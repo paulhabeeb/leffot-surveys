@@ -1,0 +1,5 @@
+.itemGrid {
+    display: grid;
+    grid-gap: var(--spacing-two-thirds);
+    grid-template-columns: repeat(5, 1fr);
+}

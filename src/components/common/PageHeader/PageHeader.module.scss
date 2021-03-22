@@ -1,0 +1,15 @@
+.pageTitle {
+    font-family: var(--font-serif);
+    font-size: var(--font-size-huge);
+    margin-bottom: var(--spacing-single);
+    text-align: center;
+}
+
+.body {
+    font-size: var(--font-size-medium);
+    margin-bottom: var(--spacing-single);
+    
+    p {
+        margin-bottom: var(--spacing-single);
+    }
+}

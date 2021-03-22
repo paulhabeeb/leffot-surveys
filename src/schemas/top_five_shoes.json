@@ -1,0 +1,160 @@
+{
+  "Main": {
+    "title": {
+      "type": "StructuredText",
+      "config": {
+        "single": "heading1, heading2, heading3, heading4, heading5, heading6",
+        "label": "Poll title",
+        "placeholder": "Poll title"
+      }
+    },
+    "poll_description": {
+      "type": "StructuredText",
+      "config": {
+        "multi": "paragraph, preformatted, heading1, heading2, heading3, heading4, heading5, heading6, strong, em, hyperlink, image, embed, list-item, o-list-item, rtl",
+        "label": "Poll description",
+        "placeholder": "Poll description"
+      }
+    },
+    "main_button_text": {
+      "type": "Text",
+      "config": {
+        "label": "Main Button Text",
+        "placeholder": "Main Button Text"
+      }
+    }
+  },
+  "Shoes": {
+    "shoe_section_title": {
+      "type": "StructuredText",
+      "config": {
+        "single": "heading1, heading2, heading3, heading4, heading5, heading6",
+        "label": "Section Title",
+        "placeholder": "Page title"
+      }
+    },
+    "shoes_section_description": {
+      "type": "StructuredText",
+      "config": {
+        "multi": "paragraph, preformatted, heading1, heading2, heading3, heading4, heading5, heading6, strong, em, hyperlink, image, embed, list-item, o-list-item, rtl",
+        "label": "Section description",
+        "placeholder": "Page description"
+      }
+    },
+    "shoes_button_text": {
+      "type": "Text",
+      "config": {
+        "label": "Button Text",
+        "placeholder": "Button text to proceed to next page"
+      }
+    },
+    "body": {
+      "type": "Slices",
+      "fieldset": "Slice zone",
+      "config": {
+        "labels": {
+          "poll_item": []
+        },
+        "choices": {
+          "poll_item": {
+            "type": "Slice",
+            "fieldset": "Poll item",
+            "description": "Poll item",
+            "icon": "format_list_numbered",
+            "display": "list",
+            "non-repeat": {
+              "item_name": {
+                "type": "StructuredText",
+                "config": {
+                  "single": "heading1, heading2, heading3, heading4, heading5, heading6",
+                  "label": "Item name",
+                  "placeholder": "Item name"
+                }
+              },
+              "item_description": {
+                "type": "StructuredText",
+                "config": {
+                  "multi": "paragraph, preformatted, heading1, heading2, heading3, heading4, heading5, heading6, strong, em, hyperlink, image, embed, list-item, o-list-item, rtl",
+                  "label": "Item description",
+                  "placeholder": "Item description"
+                }
+              }
+            },
+            "repeat": {
+              "item_image": {
+                "type": "Image",
+                "config": {
+                  "constraint": {
+                    "width": 3000
+                  },
+                  "thumbnails": [
+                    {
+                      "name": "xlarge",
+                      "width": 2000,
+                      "height": null
+                    },
+                    {
+                      "name": "large",
+                      "width": 1600,
+                      "height": null
+                    },
+                    {
+                      "name": "medium",
+                      "width": 1200,
+                      "height": null
+                    },
+                    {
+                      "name": "small",
+                      "width": 800,
+                      "height": null
+                    },
+                    {
+                      "name": "xsmall",
+                      "width": 600,
+                      "height": null
+                    }
+                  ],
+                  "label": "Item image"
+                }
+              }
+            }
+          }
+        }
+      }
+    }
+  },
+  "Top Five": {
+    "top_section_title": {
+      "type": "StructuredText",
+      "config": {
+        "single": "heading1, heading2, heading3, heading4, heading5, heading6",
+        "label": "Section Title",
+        "placeholder": "Page Title"
+      }
+    },
+    "top_section_description": {
+      "type": "StructuredText",
+      "config": {
+        "multi": "paragraph, preformatted, heading1, heading2, heading3, heading4, heading5, heading6, strong, em, hyperlink, image, embed, list-item, o-list-item, rtl",
+        "label": "Section description",
+        "placeholder": "Page Description"
+      }
+    },
+    "submit_button_text": {
+      "type": "Text",
+      "config": {
+        "label": "Submit Button Text",
+        "placeholder": "Submit Button Text"
+      }
+    }
+  },
+  "Meta": {
+    "uid": {
+      "type": "UID",
+      "config": {
+        "label": "UID",
+        "placeholder": "Poll UID"
+      }
+    }
+  }
+}
