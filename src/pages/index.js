@@ -7,8 +7,8 @@ export default function Home({ data }) {
     const pageData = data.allPrismicTopFiveShoes.edges[0].node.data
     const [selections, setSelections] = useState([])
     
-    const cookies = qs.parse(document.cookie)
-    if (cookies.hasVoted) return <main>Thank you for voting in our poll.</main>
+    // const cookies = qs.parse(document.cookie)
+    // if (cookies.hasVoted) return <main>Thank you for voting in our poll.</main>
     
     return (
         <main>
