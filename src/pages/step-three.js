@@ -15,15 +15,22 @@ export default function StepThreeQuery({ data, location }) {
     const { state = {} } = location
     const { selectedShoes: selections } = state
     
-    if (!selections) return null
-    
     const initialValues = {}
     const validationSchema = {}
-    selections.forEach(selection => {
-        const name = RichText.asText(selection.name.raw)
-        initialValues[name] = undefined
-        validationSchema[name] = Yup.string().required('Required')
-    })
+    let selectionsList = []
+    
+    if (selections) {
+        selections.forEach(selection => {
+            const name = RichText.asText(selection.name.raw)
+            initialValues[name] = undefined
+            validationSchema[name] = Yup.string().required('Required')
+        })
+        
+        selectionsList = selections.map((item, index) => <RankItem
+            name={RichText.asText(item.name.raw)}
+            image={item.images[0].item_image}
+        />)
+    }
     
     return (
         <Layout>
@@ -53,12 +60,7 @@ export default function StepThreeQuery({ data, location }) {
             >
                 {({ resetForm }) => (
                     <Form data-netlify="true">
-                        <ul>
-                            {selections.map((item, index) => <RankItem
-                                name={RichText.asText(item.name.raw)}
-                                image={item.images[0].item_image}
-                            />)}
-                        </ul>
+                        <ul>{selectionsList}</ul>
                         <button type='submit'>{pageData.submit_button_text}</button>
                         <button type='button' onClick={resetForm}>Reset form</button>
                     </Form>
