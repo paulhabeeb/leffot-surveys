@@ -12,7 +12,10 @@ import { RankItem } from '@components/shoe'
 
 export default function StepThreeQuery({ data, location }) {
     const pageData = data.allPrismicTopFiveShoes.edges[0].node.data
-    const selections = location.state.selectedShoes
+    const { state = {} } = location
+    const { selectedShoes: selections } = state
+    
+    if (!selections) return null
     
     const initialValues = {}
     const validationSchema = {}
@@ -45,7 +48,7 @@ export default function StepThreeQuery({ data, location }) {
                         headers: { 'Content-Type': 'application/x-www-form-urlencoded' }
                     })
                         .then(() => console.log('succes!'))
-                        .catch(error => consonle.log(error))
+                        .catch(error => console.log(error))
                 }}
             >
                 {({ resetForm }) => (
