@@ -1,8 +1,11 @@
 import React from 'react'
 import { graphql } from 'gatsby'
+
 import { Form, Formik } from 'formik'
 import * as Yup from 'yup'
 import axios from 'axios'
+import qs from 'qs'
+
 import { RichText } from 'prismic-reactjs'
 import {
     Layout,
@@ -14,6 +17,7 @@ export default function StepThreeQuery({ data, location }) {
     const pageData = data.allPrismicTopFiveShoes.edges[0].node.data
     const { state = {} } = location
     const { selectedShoes: selections } = state
+    const formName = 'alden-poll-march-2021'
     
     const initialValues = {}
     const validationSchema = {}
@@ -41,25 +45,28 @@ export default function StepThreeQuery({ data, location }) {
             <Formik
                 initialValues={initialValues}
                 validationSchema={Yup.object().shape(validationSchema)}
-                onSubmit={(values, { setSubmitting }) => {
+                onSubmit={(values, { resetForm, setSubmitting }) => {
                     // add form name to data we submit to netlify
                     // <input type="hidden" name="form-name" value="name_of_my_form" />
                     console.log(values)
                     axios({
                         method: 'post',
                         url: '/',
-                        data: {
-                            'form-name': 'alden-poll-march-2021',
+                        data: qs({
+                            'form-name': formName,
                             ...values,
-                        },
+                        }),
                         headers: { 'Content-Type': 'application/x-www-form-urlencoded' }
                     })
-                        .then(() => console.log('succes!'))
+                        .then(() => {
+                            console.log('succes!')
+                            resetForm()
+                        })
                         .catch(error => console.log(error))
                 }}
             >
                 {({ resetForm }) => (
-                    <Form data-netlify="true">
+                    <Form name={formName} data-netlify="true">
                         <ul>{selectionsList}</ul>
                         <button type='submit'>{pageData.submit_button_text}</button>
                         <button type='button' onClick={resetForm}>Reset form</button>
