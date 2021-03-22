@@ -52,7 +52,7 @@ export default function StepThreeQuery({ data, location }) {
                     axios({
                         method: 'post',
                         url: '/',
-                        data: qs({
+                        data: qs.parse({
                             'form-name': formName,
                             ...values,
                         }),
