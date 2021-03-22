@@ -44,6 +44,8 @@ export default function StepThreeQuery({ data, location }) {
                         },
                         headers: { 'Content-Type': 'application/x-www-form-urlencoded' }
                     })
+                        .then(() => console.log('succes!'))
+                        .catch(error => consonle.log(error))
                 }}
             >
                 {({ resetForm }) => (
