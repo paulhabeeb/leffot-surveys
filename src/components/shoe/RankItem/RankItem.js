@@ -7,7 +7,7 @@ export default function RankItem({ image, name }) {
     const [field, meta] = useField({
         name,
         type: 'select',
-        label: name,
+        label: name.replace(' ', '-').toLowerCase(),
     })
     
     let placeholderIsSelected = true
