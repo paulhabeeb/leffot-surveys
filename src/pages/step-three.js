@@ -46,20 +46,23 @@ export default function StepThreeQuery({ data, location }) {
                 initialValues={initialValues}
                 validationSchema={Yup.object().shape(validationSchema)}
                 onSubmit={(values, { resetForm, setSubmitting }) => {
-                    // add form name to data we submit to netlify
-                    // <input type="hidden" name="form-name" value="name_of_my_form" />
-                    console.log(values)
+                    const formValues = {}
+                    Object.keys(values).forEach(key => {
+                        const rank = values[key]
+                        formValues[`rank-${rank}`] = key
+                    })
+                    
                     axios({
                         method: 'post',
                         url: '/',
                         data: qs.stringify({
                             'form-name': formName,
-                            ...values,
+                            ...formValues,
                         }),
                         headers: { 'Content-Type': 'application/x-www-form-urlencoded' }
                     })
                         .then(() => {
-                            console.log('succes!')
+                            console.log('success!')
                             resetForm()
                         })
                         .catch(error => console.log(error))
@@ -67,6 +70,11 @@ export default function StepThreeQuery({ data, location }) {
             >
                 {({ resetForm }) => (
                     <Form name={formName} data-netlify="true">
+                        <input type='hidden' name='rank-1' value='' />
+                        <input type='hidden' name='rank-2' value='' />
+                        <input type='hidden' name='rank-3' value='' />
+                        <input type='hidden' name='rank-4' value='' />
+                        <input type='hidden' name='rank-5' value='' />
                         <ul>{selectionsList}</ul>
                         <button type='submit'>{pageData.submit_button_text}</button>
                         <button type='button' onClick={resetForm}>Reset form</button>
