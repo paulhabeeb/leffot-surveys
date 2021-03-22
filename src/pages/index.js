@@ -1,29 +1,37 @@
-import React from 'react'
+import React, { useState } from 'react'
 import { graphql } from 'gatsby'
-import { container } from './index.module.scss'
-import {
-    Layout,
-    PageHeader,
-    ProgressButton,
-} from '@components/common'
+import qs from 'qs'
+import { RankShoes, SelectShoes, SplashPage } from '@components/poll-steps'
 
 export default function Home({ data }) {
     const pageData = data.allPrismicTopFiveShoes.edges[0].node.data
+    const [selections, setSelections] = useState([])
+    
+    const cookies = qs.parse(document.cookie)
+    if (cookies.hasVoted) return <main>Thank you for voting in our poll.</main>
     
     return (
-        <Layout>
-            <div className={container}>
-                <PageHeader
-                    title={pageData.title.raw}
-                    description={pageData.poll_description.raw}
-                />
-                <ProgressButton
-                    isEnabled={true}
-                    label={pageData.main_button_text}
-                    url='/step-two'
-                />
-            </div>
-        </Layout>
+        <main>
+            <SplashPage
+                buttonText={pageData.main_button_text}
+                description={pageData.poll_description.raw}
+                title={pageData.title.raw}
+            />
+            <SelectShoes
+                buttonText={pageData.shoes_button_text}
+                description={pageData.shoes_section_description.raw}
+                selectedShoes={selections}
+                setSelectedShoes={setSelections}
+                shoes={pageData.body}
+                title={pageData.shoe_section_title.raw}
+            />
+            <RankShoes
+                buttonText={pageData.submit_button_text}
+                description={pageData.top_section_description.raw}
+                selections={selections}
+                title={pageData.top_section_title.raw}
+            />
+        </main>
     )
 }
 
@@ -40,6 +48,38 @@ export const query = graphql`
                             raw
                         }
                         main_button_text
+                        shoe_section_title {
+                            raw
+                        }
+                        shoes_section_description {
+                            raw
+                        }
+                        shoes_button_text
+                        body {
+                            ... on PrismicTopFiveShoesBodyPollItem {
+                                items {
+                                    item_image {
+                                        alt
+                                        url
+                                    }
+                                }
+                                primary {
+                                    item_description {
+                                        raw
+                                    }
+                                    item_name {
+                                        raw
+                                    }
+                                }
+                            }
+                        }
+                        top_section_description {
+                            raw
+                        }
+                        top_section_title {
+                            raw
+                        }
+                        submit_button_text
                     }
                 }
             }

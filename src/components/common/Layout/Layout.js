@@ -1,10 +1,20 @@
 import React from 'react'
-import { container } from './Layout.module.scss'
+import cn from 'classnames'
+import * as styles from './Layout.module.scss'
 
-export default function Layout({ children }) {
+export default function Layout({ children, id }) {
+    const className = cn(
+        styles.container,
+        {
+            [styles.whiteBorder]: id === 'splash-page',
+            [styles.darkGreyBorder]: id === 'pick-five',
+            [styles.primaryBorder]: id === 'rank-shoes',
+        },
+    )
+    
     return (
-        <main className={container}>
+        <section className={className} id={id}>
             {children}
-        </main>
+        </section>
     )
 }

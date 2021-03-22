@@ -1,3 +1,21 @@
 .container {
-    padding: var(--spacing-single);
+    align-items: center;
+    border: var(--spacing-single) solid transparent;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    min-height: calc(100vh - var(--spacing-double));
+    
+    &.whiteBorder {
+        background-color: var(--color-primary);
+        border-color: var(--color-white);
+    }
+    
+    &.darkGreyBorder {
+        border-color: var(--color-dark-grey);
+    }
+    
+    &.primaryBorder {
+        border-color: var(--color-primary);
+    }
 }

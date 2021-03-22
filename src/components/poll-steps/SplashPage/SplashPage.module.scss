@@ -1,0 +1,31 @@
+.container {
+    background-color: var(--color-white);
+    padding: var(--spacing-double);
+}
+
+.button {
+    cursor: pointer;
+    display: block;
+    font-size: var(--font-size-medium);
+    font-weight: var(--font-weight-sans-bold);
+    text-align: center;
+    text-decoration: none;
+    
+    &::after {
+        border-bottom: 2px solid var(--color-primary);
+        border-right: 2px solid var(--color-primary);
+        content: '';
+        display: block;
+        height: 10px;
+        margin: 0 auto;
+        transform: rotate(45deg);
+        transition: all 200ms ease;
+        width: 10px;
+    }
+    
+    &:hover {
+        &::after {
+            transform: rotate(45deg) translateX(2px) translateY(2px);
+        }
+    }
+}

@@ -9,16 +9,13 @@
     text-decoration: none;
     transition: all 200ms ease;
     
-    &.isDisabled {
-        background-color: var(--color-medium-grey);
-        cursor: not-allowed;
-        
-        &:hover {
-            background-color: var(--color-medium-grey);
-        }
-    }
-    
     &:hover {
         background-color: var(--color-primary-light);
     }
+}
+
+.errors {
+    color: var(--color-red);
+    font-weight: var(--font-weight-sans-bold);
+    margin-top: var(--spacing-half);
 }

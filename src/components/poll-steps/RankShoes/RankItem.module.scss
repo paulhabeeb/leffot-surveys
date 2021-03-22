@@ -1,0 +1,30 @@
+.rankItem {
+    align-items: center;
+    border-top: 2px solid var(--color-light-grey);
+    display: flex;
+    justify-content: space-between;
+    padding: var(--spacing-half) 0;
+    
+    &:last-child {
+        border-bottom: 2px solid var(--color-light-grey);
+    }
+}
+
+.rank {
+    color: var(--color-primary);
+    flex-basis: 25px;
+    flex-grow: 0;
+    font-size: var(--font-size-large);
+    font-weight: var(--font-weight-sans-bold);
+    width: 25px;
+}
+
+.image {
+    max-width: 200px;
+}
+
+.name {
+    flex-grow: 1;
+    font-size: var(--font-size-medium-small);
+    font-weight: var(--font-weight-sans-medium);
+}

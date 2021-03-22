@@ -40,7 +40,7 @@ export default function RankItem({ image, name }) {
         <li className={styles.rankItem}>
             <div className={styles.rank}>{values[name]}</div>
             <img src={image.url} alt={image.alt} className={styles.image} />
-            <div>{name}</div>
+            <div className={styles.name}>{name}</div>
             <div>
                 <select {...field}>
                     {options}
