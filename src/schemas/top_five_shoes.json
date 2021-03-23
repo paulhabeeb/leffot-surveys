@@ -140,11 +140,51 @@
         "placeholder": "Page Description"
       }
     },
+    "not_enough_shoes": {
+      "type": "StructuredText",
+      "config": {
+        "multi": "paragraph, preformatted, strong, em, hyperlink",
+        "label": "Not enough shoes",
+        "placeholder": "Not enough shoes"
+      }
+    },
     "submit_button_text": {
       "type": "Text",
       "config": {
         "label": "Submit Button Text",
         "placeholder": "Submit Button Text"
+      }
+    }
+  },
+  "Success": {
+    "success_title": {
+      "type": "StructuredText",
+      "config": {
+        "single": "heading1, heading2, heading3, heading4, heading5, heading6",
+        "label": "Success title",
+        "placeholder": "Success title"
+      }
+    },
+    "success_description": {
+      "type": "StructuredText",
+      "config": {
+        "multi": "paragraph, preformatted, heading1, heading2, heading3, heading4, heading5, heading6, strong, em, hyperlink, image, embed, list-item, o-list-item",
+        "label": "Description",
+        "placeholder": "Description"
+      }
+    },
+    "success_link_text": {
+      "type": "Text",
+      "config": {
+        "label": "Success Link Text",
+        "placeholder": "Success Link Text"
+      }
+    },
+    "success_link": {
+      "type": "Link",
+      "config": {
+        "label": "Success Link",
+        "placeholder": "Success Link"
       }
     }
   },
