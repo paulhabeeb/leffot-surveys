@@ -7,6 +7,10 @@
     text-decoration: none;
     transition: all 200ms ease;
 
+    &:disabled {
+        cursor: not-allowed;
+    }
+
     &.primary {
         background-color: var(--color-primary);
         color: var(--color-white);
@@ -22,6 +26,15 @@
 
         &:hover {
             background-color: var(--color-lighter-grey);
+        }
+    }
+
+    .submitting {
+        align-items: center;
+        display: flex;
+
+        span {
+            margin-right: var(--spacing-half);
         }
     }
 }

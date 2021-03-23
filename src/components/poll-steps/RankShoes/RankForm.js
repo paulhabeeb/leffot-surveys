@@ -57,7 +57,7 @@ export default function RankForm({
             validationSchema={Yup.object().shape(validationSchema)}
             onSubmit={handleSubmit}
         >
-            {({ resetForm, status }) => (
+            {({ isSubmitting, resetForm, status }) => (
                 <Form name={formName} data-netlify="true">
                     <input type='hidden' name='rank-1' value='' />
                     <input type='hidden' name='rank-2' value='' />
@@ -70,6 +70,7 @@ export default function RankForm({
                             label={buttonText}
                             kind='primary'
                             type='submit'
+                            isSubmitting={isSubmitting}
                         />
                         <Button
                             label='Reset rankings'
@@ -78,7 +79,7 @@ export default function RankForm({
                             onClick={resetForm}
                         />
                     </div>
-                    {status && status.error && <div>{status.error}</div>}
+                    {status && status.error && <div className={styles.errors}>{status.error}</div>}
                 </Form>
             )}
         </Formik>
