@@ -1,5 +1,6 @@
 import React, { useState } from 'react'
 import { graphql } from 'gatsby'
+import { SEO } from '@components/common'
 import { RankShoes, SelectShoes, SplashPage } from '@components/poll-steps'
 
 export default function Home({ data }) {
@@ -11,6 +12,12 @@ export default function Home({ data }) {
 
     return (
         <main>
+            <SEO
+                title={pageData.page_title}
+                description={pageData.page_description}
+                url={pageData.page_url}
+                image={pageData.page_image.url}
+            />
             <SplashPage
                 buttonText={pageData.main_button_text}
                 description={pageData.poll_description.raw}
@@ -41,6 +48,12 @@ export const query = graphql`
             edges {
                 node {
                     data {
+                        page_title
+                        page_description
+                        page_url
+                        page_image {
+                            url
+                        }
                         title {
                             raw
                         }

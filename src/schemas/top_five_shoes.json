@@ -195,6 +195,37 @@
         "label": "UID",
         "placeholder": "Poll UID"
       }
+    },
+    "page_title": {
+      "type": "Text",
+      "config": {
+        "label": "Page Title",
+        "placeholder": "Page Title"
+      }
+    },
+    "page_description": {
+      "type": "Text",
+      "config": {
+        "label": "Page Description",
+        "placeholder": "Page Description"
+      }
+    },
+    "page_url": {
+      "type": "Text",
+      "config": {
+        "label": "Page URL",
+        "placeholder": "Page URL"
+      }
+    },
+    "page_image": {
+      "type": "Image",
+      "config": {
+        "constraint": {
+          "width": 1600
+        },
+        "thumbnails": [],
+        "label": "Page Image"
+      }
     }
   }
 }

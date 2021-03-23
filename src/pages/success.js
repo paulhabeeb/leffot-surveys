@@ -1,7 +1,7 @@
 import React from 'react'
 import { graphql } from 'gatsby'
 
-import { Layout, PageHeader } from '@components/common'
+import { Layout, PageHeader, SEO } from '@components/common'
 import * as styles from './Success.module.scss'
 
 export default function Success({ data }) {
@@ -9,6 +9,7 @@ export default function Success({ data }) {
 
     return (
         <main>
+            <SEO title='Success! Thank you for voting.' />
             <Layout>
                 <PageHeader
                     title={pageData.success_title.raw}
