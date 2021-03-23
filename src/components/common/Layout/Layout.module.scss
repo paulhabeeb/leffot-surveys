@@ -1,14 +1,24 @@
+@import 'mixins';
+
 .container {
     align-items: center;
-    border: var(--spacing-single) solid transparent;
+    border: var(--spacing-half) solid transparent;
     display: flex;
     flex-direction: column;
     justify-content: center;
     min-height: 100vh;
 
+    @include breakpoint('small') {
+        border-width: var(--spacing-single);
+    }
+
     &.whiteBorder {
-        background-color: var(--color-primary);
-        border-color: var(--color-white);
+        border-color: var(--color-primary);
+
+        @include breakpoint('small') {
+            background-color: var(--color-primary);
+            border-color: var(--color-white);
+        }
     }
 
     &.darkGreyBorder {

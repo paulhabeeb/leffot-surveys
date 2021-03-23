@@ -1,3 +1,5 @@
+@import 'mixins';
+
 .container {
     margin: 0 auto;
     max-width: 600px;
@@ -6,11 +8,20 @@
 
 .actions {
     display: flex;
+    flex-direction: column;
     justify-content: center;
     padding-top: var(--spacing-double);
 
+    @include breakpoint('small') {
+        flex-direction: row;
+    }
+
     button {
-        margin: 0 var(--spacing-half);
+        margin: var(--spacing-half) 0;
+
+        @include breakpoint('small') {
+            margin: 0 var(--spacing-half);
+        }
     }
 }
 

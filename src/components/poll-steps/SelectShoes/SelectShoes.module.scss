@@ -1,13 +1,27 @@
+@import 'mixins';
+
 .container {
-    padding: var(--spacing-triple);
+    padding: var(--spacing-triple) var(--spacing-single);
     width: 100%;
+
+    @include breakpoint('medium') {
+        padding: var(--spacing-triple);
+    }
 }
 
 .itemGrid {
     display: grid;
     grid-gap: var(--spacing-two-thirds);
-    grid-template-columns: repeat(5, 1fr);
+    grid-template-columns: 1fr 1fr;
     margin: var(--spacing-single) 0;
+
+    @include breakpoint('small') {
+        grid-template-columns: repeat(3, 1fr);
+    }
+
+    @include breakpoint('large') {
+        grid-template-columns: repeat(5, 1fr);
+    }
 }
 
 .actions {

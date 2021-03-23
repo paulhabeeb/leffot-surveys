@@ -1,6 +1,16 @@
+@import 'mixins';
+
 .container {
     background-color: var(--color-white);
-    padding: var(--spacing-double);
+    padding: var(--spacing-triple) var(--spacing-single);
+
+    @include breakpoint('small') {
+        padding: var(--spacing-triple) var(--spacing-double);
+    }
+
+    @include breakpoint('medium') {
+        padding: var(--spacing-double);
+    }
 }
 
 .button {
@@ -10,7 +20,7 @@
     font-weight: var(--font-weight-sans-bold);
     text-align: center;
     text-decoration: none;
-    
+
     &::after {
         border-bottom: 2px solid var(--color-primary);
         border-right: 2px solid var(--color-primary);
@@ -22,7 +32,7 @@
         transition: all 200ms ease;
         width: 10px;
     }
-    
+
     &:hover {
         &::after {
             transform: rotate(45deg) translateX(2px) translateY(2px);

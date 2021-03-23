@@ -1,3 +1,5 @@
+@import 'mixins';
+
 .rankItem {
     border-top: 2px solid var(--color-light-grey);
     padding: var(--spacing-half) 0;
@@ -10,11 +12,22 @@
 .flex {
     align-items: center;
     display: flex;
+    flex-wrap: wrap;
     justify-content: space-between;
+
+    @include breakpoint('medium') {
+        flex-wrap: nowrap;
+    }
 }
 
 .image {
-    max-width: 200px;
+    flex-grow: 1;
+    margin-bottom: var(--spacing-single);
+
+    @include breakpoint('small') {
+        margin-bottom: 0;
+        max-width: 200px;
+    }
 }
 
 .name {
@@ -74,5 +87,10 @@
 .error {
     color: var(--color-red);
     font-weight: var(--font-weight-sans-medium);
+    margin-top: var(--spacing-half);
     text-align: right;
+
+    @include breakpoint('medium') {
+        margin-top: 0;
+    }
 }

@@ -1,14 +1,24 @@
+@import 'mixins';
+
 .container {
     margin: 0 auto;
-    max-width: 800px;
+    max-width: 550px;
     width: 100%;
+
+    @include breakpoint('large') {
+        max-width: 800px;
+    }
 }
 
 .pageTitle {
     font-family: var(--font-serif);
     font-size: var(--font-size-huge);
-    margin-bottom: var(--spacing-half);
-    text-align: center;
+    line-height: 1.2;
+    margin-bottom: var(--spacing-single);
+
+    @include breakpoint('small') {
+        text-align: center;
+    }
 }
 
 .body {
@@ -16,7 +26,9 @@
     margin-bottom: var(--spacing-double);
 
     &.alignCenter {
-        text-align: center;
+        @include breakpoint('small') {
+            text-align: center;
+        }
     }
 
     p {

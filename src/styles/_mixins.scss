@@ -1,0 +1,22 @@
+$screenSizeMap: (
+    small: 551px,
+    medium: 801px,
+    large: 1040px,
+    xl: 1200px,
+    xxl: 1261px,
+);
+
+@function screenSize($key) {
+    @if map-has-key($screenSizeMap, $key) {
+        @return map-get($screenSizeMap, $key);
+    }
+    
+    @warn "Unknown `#{$key}` in $screenSizeMap.";
+    @return null;
+}
+
+@mixin breakpoint($size) {
+    @media (min-width: screenSize($size)) {
+        @content;
+    }
+}

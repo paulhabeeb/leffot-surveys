@@ -3,7 +3,14 @@ require("dotenv").config()
 module.exports = {
     plugins: [
         'gatsby-plugin-react-helmet',
-        'gatsby-plugin-sass',
+        {
+            resolve: 'gatsby-plugin-sass',
+            options: {
+                sassOptions: {
+                    includePaths: ['src/styles'],
+                },
+            },
+        },
         {
             resolve: 'gatsby-plugin-web-font-loader',
             options: {
