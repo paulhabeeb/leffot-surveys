@@ -1,15 +1,14 @@
 import React, { useState } from 'react'
 import { graphql } from 'gatsby'
-import qs from 'qs'
 import { RankShoes, SelectShoes, SplashPage } from '@components/poll-steps'
 
 export default function Home({ data }) {
     const pageData = data.allPrismicTopFiveShoes.edges[0].node.data
     const [selections, setSelections] = useState([])
-    
+
     // const cookies = qs.parse(document.cookie)
     // if (cookies.hasVoted) return <main>Thank you for voting in our poll.</main>
-    
+
     return (
         <main>
             <SplashPage
@@ -28,6 +27,7 @@ export default function Home({ data }) {
             <RankShoes
                 buttonText={pageData.submit_button_text}
                 description={pageData.top_section_description.raw}
+                errorMessage={pageData.not_enough_shoes.raw}
                 selections={selections}
                 title={pageData.top_section_title.raw}
             />
@@ -77,6 +77,9 @@ export const query = graphql`
                             raw
                         }
                         top_section_title {
+                            raw
+                        }
+                        not_enough_shoes {
                             raw
                         }
                         submit_button_text

@@ -7,42 +7,50 @@ import { Layout, PageHeader } from '@components/common'
 import RankForm from './RankForm'
 import RankItem from './RankItem'
 
-export default function StepThreeQuery({ buttonText, description, selections, title }) {
+export default function RankShoes({
+    buttonText,
+    description,
+    errorMessage,
+    selections,
+    title,
+}) {
+    let hasEnoughSelections = false
+    if (selections.length === 5) {
+        hasEnoughSelections = true
+    }
+
     const initialValues = {}
     const validationSchema = {}
     let selectionsList = []
-    
+
     if (selections) {
         selections.forEach(selection => {
             const name = RichText.asText(selection.name.raw)
             initialValues[name] = undefined
-            validationSchema[name] = Yup.string().required('Required')
+            validationSchema[name] = Yup.string().required('Please select a rank')
         })
-        
+
         selectionsList = selections.map((item, index) => <RankItem
             name={RichText.asText(item.name.raw)}
             image={item.images[0].item_image}
+            key={index}
         />)
     }
-    
+
     return (
         <Layout id='rank-shoes'>
             <div className={styles.container}>
                 <PageHeader
                     alignCenter={true}
                     title={title}
-                    description={description}
+                    description={hasEnoughSelections ? description : errorMessage}
                 />
-                {selections.length === 5 ? (
-                    <RankForm
-                        buttonText={buttonText}
-                        initialValues={initialValues}
-                        selectionsList={selectionsList}
-                        validationSchema={validationSchema}
-                    />
-                ) : (
-                    <div>Please select five shoes.</div>
-                )}
+                {hasEnoughSelections && <RankForm
+                    buttonText={buttonText}
+                    initialValues={initialValues}
+                    selectionsList={selectionsList}
+                    validationSchema={validationSchema}
+                />}
             </div>
         </Layout>
     )

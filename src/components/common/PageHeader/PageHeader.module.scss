@@ -7,18 +7,18 @@
 .pageTitle {
     font-family: var(--font-serif);
     font-size: var(--font-size-huge);
-    margin-bottom: var(--spacing-single);
+    margin-bottom: var(--spacing-half);
     text-align: center;
 }
 
 .body {
     font-size: var(--font-size-medium);
-    margin-bottom: var(--spacing-single);
-    
+    margin-bottom: var(--spacing-double);
+
     &.alignCenter {
         text-align: center;
     }
-    
+
     p {
         margin-bottom: var(--spacing-single);
     }

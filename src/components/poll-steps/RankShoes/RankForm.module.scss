@@ -1,5 +1,15 @@
 .container {
     margin: 0 auto;
-    max-width: 800px;
+    max-width: 600px;
     width: 100%;
+}
+
+.actions {
+    display: flex;
+    justify-content: center;
+    padding-top: var(--spacing-double);
+
+    button {
+        margin: 0 var(--spacing-half);
+    }
 }

@@ -10,14 +10,22 @@ export default function ShoeCard({ description, images, isSelected, name, onClic
             images,
         })
     }
-    
+
     const title = RichText.asText(name.raw)
+    const buttonTitle = `Add the ${title} to your favorites.`
     const wrapper = {
         backgroundImage: `url(${images[0].item_image.url})`
     }
-    
+
     return (
-        <li className={styles.shoeCard} onClick={handleClick} onKeyPress={handleClick}>
+        <li className={styles.shoeCard}>
+            <button
+                className={styles.button}
+                onClick={handleClick}
+                onKeyPress={handleClick}
+            >
+                <span className='visuallyHidden'>{buttonTitle}</span>
+            </button>
             <div
                 className={cn(
                     styles.imgWrapper,
@@ -26,7 +34,7 @@ export default function ShoeCard({ description, images, isSelected, name, onClic
                     },
                 )}
                 style={wrapper}
-                title={`Add the ${title} to your favorites.`}
+                title={buttonTitle}
             >
                 <img
                     className={styles.img}
@@ -36,12 +44,12 @@ export default function ShoeCard({ description, images, isSelected, name, onClic
             </div>
             <div className={styles.cardText}>
                 <h2>{title}</h2>
-                <button
+                {/* <button
                     type='button'
                     className={styles.infoButton}
                 >
                     Details
-                </button>
+                </button> */}
             </div>
         </li>
     )

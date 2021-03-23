@@ -1,11 +1,13 @@
 import React from 'react'
+import { navigate } from 'gatsby'
+
 import { Form, Formik } from 'formik'
 import * as Yup from 'yup'
 import axios from 'axios'
 import qs from 'qs'
 
 import * as styles from './RankForm.module.scss'
-import { ProgressButton } from '@components/common'
+import { Button } from '@components/common'
 
 export default function RankForm({
     buttonText,
@@ -14,20 +16,20 @@ export default function RankForm({
     validationSchema,
 }) {
     const formName = 'alden-poll-march-2021'
-    
+
     const getFormData = values => {
         const formValues = {
             'form-name': formName,
         }
-        
+
         Object.keys(values).forEach(key => {
             const rank = values[key]
             formValues[`rank-${rank}`] = key
         })
-        
+
         return qs.stringify(formValues)
     }
-    
+
     const handleSubmit = async (values, { resetForm, setStatus, setSubmitting }) => {
         try {
             const response = await axios({
@@ -36,10 +38,11 @@ export default function RankForm({
                 headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
                 data: getFormData(values),
             })
-            
+
             console.log(response)
             // Set a cookie
             // document.cookie = "test1=Hello!; max-age=3600" // eslint-disable-line no-undef
+            navigate('/success')
         } catch (error) {
             console.log(error)
             setStatus({
@@ -47,7 +50,7 @@ export default function RankForm({
             })
         }
     }
-    
+
     return (
         <Formik
             initialValues={initialValues}
@@ -62,11 +65,19 @@ export default function RankForm({
                     <input type='hidden' name='rank-4' value='' />
                     <input type='hidden' name='rank-5' value='' />
                     <ul className={styles.container}>{selectionsList}</ul>
-                    <ProgressButton
-                        label={buttonText}
-                        type='submit'
-                    />
-                    <button type='button' onClick={resetForm}>Reset form</button>
+                    <div className={styles.actions}>
+                        <Button
+                            label={buttonText}
+                            kind='primary'
+                            type='submit'
+                        />
+                        <Button
+                            label='Reset rankings'
+                            kind='secondary'
+                            type='button'
+                            onClick={resetForm}
+                        />
+                    </div>
                     {status && status.error && <div>{status.error}</div>}
                 </Form>
             )}

@@ -1,0 +1,33 @@
+.button {
+    border: 0;
+    display: inline-block;
+    font-size: var(--font-size-medium);
+    font-weight: var(--font-weight-sans-bold);
+    padding: var(--spacing-half) 1.25rem;
+    text-decoration: none;
+    transition: all 200ms ease;
+
+    &.primary {
+        background-color: var(--color-primary);
+        color: var(--color-white);
+
+        &:hover {
+            background-color: var(--color-primary-light);
+        }
+    }
+
+    &.secondary {
+        background-color: var(--color-light-grey);
+        color: var(--color-dark-grey);
+
+        &:hover {
+            background-color: var(--color-lighter-grey);
+        }
+    }
+}
+
+.errors {
+    color: var(--color-red);
+    font-weight: var(--font-weight-sans-medium);
+    margin-top: var(--spacing-half);
+}
