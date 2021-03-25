@@ -1,0 +1,9 @@
+@import 'inputs';
+
+.input {
+    @extend %inputBase;
+    min-height: 100px;
+    padding: var(--spacing-third);
+    resize: vertical;
+    width: 100%;
+}

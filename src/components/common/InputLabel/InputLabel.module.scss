@@ -1,0 +1,13 @@
+.label {
+    display: block;
+    font-size: var(--font-size-small);
+    font-weight: var(--font-weight-sans-medium);
+    margin-bottom: var(--spacing-quarter);
+}
+
+.status {
+    color: var(--color-dark-grey);
+    display: inline-block;
+    font-size: var(--font-size-smaller);
+    margin-left: var(--spacing-third);
+}

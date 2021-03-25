@@ -128,6 +128,10 @@ img {
     width: 100%;
 }
 
+.ReactModal__Body--open {
+    overflow: hidden;
+}
+
 .visuallyHidden {
     border: 0;
     clip: rect(0 0 0 0);

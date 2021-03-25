@@ -1,0 +1,7 @@
+@import 'inputs';
+
+.input {
+    @extend %inputBase;
+    padding: .6em 1.9em .5em .8em;
+    width: 100%;
+}

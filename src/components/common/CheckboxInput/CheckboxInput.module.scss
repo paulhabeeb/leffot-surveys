@@ -1,0 +1,61 @@
+@import 'inputs';
+
+.label {
+    cursor: pointer;
+    display: inline-block;
+    padding: var(--spacing-eighth) 0 var(--spacing-eighth) 1.875rem;
+    position: relative;
+    vertical-align: baseline;
+    width: 100%;
+
+    &::after,
+    &::before {
+        content: '';
+        display: block;
+        position: absolute;
+        top: 50%;
+    }
+
+    &::after {
+        background-image: url("data:image/svg+xml;charset=utf8,%3Csvg xmlns='http://www.w3.org/2000/svg' width='24' height='24' viewBox='0 0 24 24'%3E%3Cpath d='M9 16.17L4.83 12l-1.42 1.41L9 19 21 7l-1.41-1.41z' fill='222222' /%3E%3C/svg%3E");
+        background-position: 50%;
+        background-repeat: no-repeat;
+        background-size: 100%;
+        font-size: .875rem;
+        height: .875rem;
+        left: 2px;
+        line-height: 1;
+        margin-top: -0.4375rem;
+        opacity: 0;
+        text-align: center;
+        transform: scale(0);
+        transition: all 50ms ease-out;
+        width: .875rem;
+    }
+
+    &::before {
+        @extend %inputBase;
+        background-color: var(--color-white);
+        border: 1px solid var(--color-light-grey);
+        border-radius: 1px;
+        height: var(--spacing-two-thirds);
+        left: 0;
+        margin-right: .875rem;
+        margin-top: -.625rem;
+        transition: all 200ms ease-out;
+        width: var(--spacing-two-thirds);
+    }
+
+    input:focus + &::before {
+        border-color: var(--color-light-grey);
+        box-shadow: 0 0 1px 3px rgba(59, 153, 252, .7);
+        box-shadow: 0 0 0 3px -moz-mac-focusring;
+        color: var(--color-not-black);
+        outline: none;
+    }
+
+    input:checked + &::after {
+        opacity: 1;
+        transform: scale(1);
+    }
+}

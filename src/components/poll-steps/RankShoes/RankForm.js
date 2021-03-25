@@ -1,5 +1,6 @@
 import React from 'react'
 import { navigate } from 'gatsby'
+import { cookieName, getCookieValue, setCookie } from '@lib/cookies'
 
 import { Form, Formik } from 'formik'
 import * as Yup from 'yup'
@@ -7,7 +8,7 @@ import axios from 'axios'
 import qs from 'qs'
 
 import * as styles from './RankForm.module.scss'
-import { Button } from '@components/common'
+import { Button, CheckboxInput, Textarea, TextInput } from '@components/common'
 
 export default function RankForm({
     buttonText,
@@ -40,8 +41,11 @@ export default function RankForm({
             })
 
             console.log(response)
-            // Set a cookie
-            // document.cookie = "test1=Hello!; max-age=3600" // eslint-disable-line no-undef
+
+            const allowedCookies = getCookieValue(cookieName)
+            if (allowedCookies) {
+                setCookie('hasVoted', true)
+            }
             navigate('/success')
         } catch (error) {
             console.log(error)
@@ -64,7 +68,44 @@ export default function RankForm({
                     <input type='hidden' name='rank-3' value='' />
                     <input type='hidden' name='rank-4' value='' />
                     <input type='hidden' name='rank-5' value='' />
-                    <ul className={styles.container}>{selectionsList}</ul>
+                    <ul className={styles.listContainer}>
+                        {selectionsList}
+                    </ul>
+                    <div className={styles.textInputContainer}>
+                        <h2 className={styles.tellUs}>Tell us about yourself</h2>
+                        <div className={styles.flex}>
+                            <TextInput
+                                label='First name'
+                                name='firstName'
+                                type='text'
+                                placeholder='First name'
+                                status='Optional'
+                            />
+                            <TextInput
+                                label='Last name'
+                                name='lastName'
+                                type='text'
+                                placeholder='Last name'
+                                status='Optional'
+                            />
+                        </div>
+                        <TextInput
+                            label='Email address'
+                            name='email'
+                            type='text'
+                            placeholder='you@example.com'
+                            status='Optional'
+                        />
+                        <CheckboxInput name='joinEmailList'>
+                            Join our mailing list to receive news, etc.
+                        </CheckboxInput>
+                        <Textarea
+                            label='Leave a comment'
+                            name='comments'
+                            placeholder='Hoping for a different model? Have other thoughts? Let us know.'
+                            status='Optional'
+                        />
+                    </div>
                     <div className={styles.actions}>
                         <Button
                             label={buttonText}
@@ -73,7 +114,7 @@ export default function RankForm({
                             isSubmitting={isSubmitting}
                         />
                         <Button
-                            label='Reset rankings'
+                            label='Reset form'
                             kind='secondary'
                             type='button'
                             onClick={resetForm}

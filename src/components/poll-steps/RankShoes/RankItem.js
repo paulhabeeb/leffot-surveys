@@ -1,7 +1,9 @@
 import React from 'react'
 import { useField, useFormikContext } from 'formik'
+
 import cn from 'classnames'
 import * as styles from './RankItem.module.scss'
+import { ErrorMessage } from '@components/common'
 
 export default function RankItem({ image, name }) {
     const { values } = useFormikContext()
@@ -10,9 +12,6 @@ export default function RankItem({ image, name }) {
         type: 'select',
         label: name.replace(' ', '-').toLowerCase(),
     })
-
-    let hasError = false
-    if (meta.touched && meta.error) hasError = true
 
     let placeholderIsSelected = true
     if (values[name] !== undefined) placeholderIsSelected = false
@@ -48,17 +47,13 @@ export default function RankItem({ image, name }) {
                 <div>
                     <select {...field} className={cn(
                         styles.selectRank,
-                        {
-                            [styles.errorBorder]: hasError,
-                        },
+                        { [styles.errorBorder]: meta.touched && meta.error },
                     )}>
                         {options}
                     </select>
                 </div>
             </div>
-            {hasError ? (
-                <div className={styles.error}>{meta.error}</div>
-            ) : null}
+            <ErrorMessage customStyles={styles.error} meta={meta} />
         </li>
     )
 }

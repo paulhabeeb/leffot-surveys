@@ -1,14 +1,18 @@
 import React, { useState } from 'react'
-import { graphql } from 'gatsby'
-import { SEO } from '@components/common'
+import { graphql, navigate } from 'gatsby'
+import { getCookieValue } from '@lib/cookies'
+
+import { CookieBanner, SEO } from '@components/common'
 import { RankShoes, SelectShoes, SplashPage } from '@components/poll-steps'
 
 export default function Home({ data }) {
     const pageData = data.allPrismicTopFiveShoes.edges[0].node.data
     const [selections, setSelections] = useState([])
 
-    // const cookies = qs.parse(document.cookie)
-    // if (cookies.hasVoted) return <main>Thank you for voting in our poll.</main>
+    if (getCookieValue('hasVoted')) {
+        navigate('/success')
+        return null
+    }
 
     return (
         <main>
@@ -38,6 +42,7 @@ export default function Home({ data }) {
                 selections={selections}
                 title={pageData.top_section_title.raw}
             />
+            <CookieBanner />
         </main>
     )
 }

@@ -1,0 +1,40 @@
+@import 'button';
+
+.addButton {
+    @extend %button;
+    background-color: var(--color-secondary);
+    color: var(--color-white);
+    margin-right: var(--spacing-third);
+
+    &:hover {
+        background-color: var(--color-secondary-light);
+    }
+}
+
+@keyframes stroke {
+    100% {
+        stroke-dashoffset: 0;
+    }
+}
+
+.checkmark {
+    display: inline-block;
+
+    svg {
+        display: inline-block;
+        height: 24px;
+        margin-top: -4px;
+        stroke: var(--color-white);
+        stroke-miterlimit: 10;
+        stroke-width: 4;
+        vertical-align: middle;
+        width: 24px;
+    }
+}
+
+.checkmarkCheck {
+    transform-origin: 50% 50%;
+    stroke-dasharray: 48;
+    stroke-dashoffset: 48;
+    animation: stroke 300ms cubic-bezier(0.65, 0, 0.45, 1) 300ms forwards;
+}

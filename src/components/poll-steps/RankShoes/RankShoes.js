@@ -19,8 +19,26 @@ export default function RankShoes({
         hasEnoughSelections = true
     }
 
-    const initialValues = {}
-    const validationSchema = {}
+    const initialValues = {
+        firstName: '',
+        lastName: '',
+        email: '',
+        joinEmailList: false,
+        comments: '',
+    }
+    const validationSchema = {
+        firstName: Yup.string(),
+        lastName: Yup.string(),
+        email: Yup.string().when('joinEmailList', {
+            is: true,
+            then: Yup.string()
+                .email('Please enter a valid email address')
+                .required('You must enter a valid email address if you’d like to subscribe to our mailing list'),
+            otherwise: Yup.string().email('Please enter a valid email address'),
+        }),
+        joinEmailList: Yup.boolean(),
+        comments: Yup.string(),
+    }
     let selectionsList = []
 
     if (selections) {

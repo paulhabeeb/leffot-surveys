@@ -3,6 +3,7 @@ import { scroller } from 'react-scroll'
 
 import { Layout, PageHeader, Button } from '@components/common'
 import ShoeCard from './ShoeCard'
+import DetailsModal from './DetailsModal'
 import * as styles from './SelectShoes.module.scss'
 
 export default function SelectShoes({
@@ -14,6 +15,18 @@ export default function SelectShoes({
     title,
 }) {
     const [errorMessage, setErrorMessage] = useState(null)
+    const [modal, setModal] = useState({
+        isOpen: false,
+        shoe: {
+            name: {
+                raw: null,
+            },
+            description: {
+                raw: null,
+            },
+            images: [],
+        },
+    })
 
     const updateErrorMessage = (arrayLength, hasTriedSubmit = false) => {
         if (arrayLength === 5) {
@@ -71,12 +84,12 @@ export default function SelectShoes({
                 />
                 <ul className={styles.itemGrid}>
                     {shoes.map((shoe, index) => <ShoeCard
-                        name={shoe.primary.item_name}
                         description={shoe.primary.item_description}
                         images={shoe.items}
                         isSelected={selectedShoes.filter(item => item.name === shoe.primary.item_name).length > 0}
+                        name={shoe.primary.item_name}
                         onClick={updateSelectedShoes}
-                        shouldDisabled={selectedShoes.length > 5}
+                        setModal={setModal}
                         key={index}
                     />)}
                 </ul>
@@ -90,6 +103,13 @@ export default function SelectShoes({
                     />
                 </div>
             </div>
+            <DetailsModal
+                isOpen={modal.isOpen}
+                isSelected={selectedShoes.filter(item => item.name === modal.shoe.name).length > 0}
+                onClick={updateSelectedShoes}
+                setModal={setModal}
+                shoe={modal.shoe}
+            />
         </Layout>
     )
 }
