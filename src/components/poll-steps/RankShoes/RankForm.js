@@ -52,9 +52,9 @@ export default function RankForm({
 
             console.log(response)
 
-            const allowedCookies = getCookieValue(cookieName)
+            const allowedCookies = getCookieValue(cookieName.consent)
             if (allowedCookies) {
-                setCookie('hasVoted', true)
+                setCookie(cookieName.voted, true)
             }
             navigate('/success')
         } catch (error) {

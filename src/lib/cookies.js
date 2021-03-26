@@ -1,31 +1,20 @@
 import Cookies from 'js-cookie'
 
-export const cookieName = 'CookieConsent'
-
-export const getCookieValue = name => {
-    let cookieValue = Cookies.get(name)
-
-    if (cookieValue === undefined) {
-        cookieValue = Cookies.get(getLegacyCookieName(name))
-    }
-
-    return cookieValue
+export const cookieName = {
+    consent: 'CookieConsent',
+    voted: 'hasVoted',
 }
 
-const getLegacyCookieName = name => {
-    return `${name}-legacy`
+export const getCookieValue = name => {
+    return Cookies.get(name)
 }
 
 export const setCookie = (cookieName, cookieValue) => {
     const cookieOptions = {
         expires: 1,
-        sameSite: 'tk',
+        sameSite: 'lax',
         secure: true,
     }
-
-    // if (sameSite === 'none') {
-    //     Cookies.set(getLegacyCookieName(cookieName), cookieValue, cookieOptions)
-    // }
 
     Cookies.set(cookieName, cookieValue, cookieOptions)
 }

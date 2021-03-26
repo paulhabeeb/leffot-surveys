@@ -1,6 +1,6 @@
 import React, { useState } from 'react'
 import { graphql, navigate } from 'gatsby'
-import { getCookieValue } from '@lib/cookies'
+import { cookieName, getCookieValue } from '@lib/cookies'
 
 import { CookieBanner, SEO } from '@components/common'
 import { RankShoes, SelectShoes, SplashPage } from '@components/poll-steps'
@@ -9,7 +9,7 @@ export default function Home({ data }) {
     const pageData = data.allPrismicTopFiveShoes.edges[0].node.data
     const [selections, setSelections] = useState([])
 
-    if (getCookieValue('hasVoted')) {
+    if (getCookieValue(cookieName.voted)) {
         navigate('/success')
         return null
     }

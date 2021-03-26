@@ -6,7 +6,7 @@ export default function CookieBanner() {
     const [showBanner, setShowBanner] = useState(false)
 
     useEffect(() => {
-        const cookieValue = getCookieValue(cookieName)
+        const cookieValue = getCookieValue(cookieName.consent)
 
         if (cookieValue === undefined) {
             setShowBanner(true)
@@ -14,12 +14,12 @@ export default function CookieBanner() {
     }, [])
 
     const accept = () => {
-        setCookie(cookieName, true)
+        setCookie(cookieName.consent, true)
         setShowBanner(false)
     }
 
     const decline = () => {
-        setCookie(cookieName, false)
+        setCookie(cookieName.consent, false)
         setShowBanner(false)
     }
 
@@ -29,7 +29,7 @@ export default function CookieBanner() {
         <div className={styles.container}>
             <h2>This site uses cookies</h2>
             <p>We use cookies</p>
-            <div className={styles.actions}>
+            <div>
                 <button
                     className={styles.acceptButton}
                     onClick={accept}
