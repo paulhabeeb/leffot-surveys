@@ -39,12 +39,13 @@ export default function RankShoes({
         joinEmailList: Yup.boolean(),
         comments: Yup.string(),
     }
+    const initialSelections = {}
     let selectionsList = []
 
     if (selections) {
         selections.forEach(selection => {
             const name = RichText.asText(selection.name.raw)
-            initialValues[name] = undefined
+            initialSelections[name] = undefined
             validationSchema[name] = Yup.string().required('Please select a rank')
         })
 
@@ -65,6 +66,7 @@ export default function RankShoes({
                 />
                 {hasEnoughSelections && <RankForm
                     buttonText={buttonText}
+                    initialSelections={initialSelections}
                     initialValues={initialValues}
                     selectionsList={selectionsList}
                     validationSchema={validationSchema}

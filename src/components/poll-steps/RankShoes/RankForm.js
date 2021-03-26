@@ -12,6 +12,7 @@ import { Button, CheckboxInput, Textarea, TextInput } from '@components/common'
 
 export default function RankForm({
     buttonText,
+    initialSelections,
     initialValues,
     selectionsList,
     validationSchema,
@@ -24,8 +25,17 @@ export default function RankForm({
         }
 
         Object.keys(values).forEach(key => {
-            const rank = values[key]
-            formValues[`rank-${rank}`] = key
+            // Shoes being ranked are stored in formik with the shoe
+            // name as the key and the rank as the value. We swap those
+            // here so each form submission has rank-1, rank-2, etc.
+            // But we don't touch anything in initalValues, which are the
+            // form fields like firstName, email address, etc.
+            if (Object.keys(initialValues).includes(key)) {
+                formValues[key] = values[key]
+            } else {
+                const rank = values[key]
+                formValues[`rank-${rank}`] = key
+            }
         })
 
         return qs.stringify(formValues)
@@ -57,7 +67,10 @@ export default function RankForm({
 
     return (
         <Formik
-            initialValues={initialValues}
+            initialValues={{
+                ...initialValues,
+                ...initialSelections,
+            }}
             validationSchema={Yup.object().shape(validationSchema)}
             onSubmit={handleSubmit}
         >
