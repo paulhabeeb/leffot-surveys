@@ -20,16 +20,23 @@
 .container {
     display: flex;
     flex-direction: column;
-    padding: var(--spacing-single);
 
     @include breakpoint('medium') {
         flex-direction: row;
+        padding: var(--spacing-single);
     }
 }
 
 .details {
     max-width: 200px;
     width: 100%;
+
+    @include breakpoint('medium') {
+        max-height: calc(100vh - 20px - var(--spacing-double));
+        position: sticky;
+        top: 0;
+    }
+
     ul {
         list-style: disc;
         margin-left: var(--spacing-single);
@@ -58,6 +65,7 @@
     }
 
     @include breakpoint('medium') {
+        margin-top: 0;
         margin-left: var(--spacing-double);
     }
 }
