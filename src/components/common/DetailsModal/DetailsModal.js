@@ -1,37 +1,17 @@
-import React, { useState } from 'react'
+import React from 'react'
 import ReactModal from 'react-modal'
 import { RichText } from 'prismic-reactjs'
+
 import * as styles from './DetailsModal.module.scss'
-import AddButton from './AddButton'
+import ImageGrid from './ImageGrid'
 
-function DetailImage({ alt, url }) {
-    return (
-        <figure
-            className={styles.imageWrapper}
-            style={{ backgroundImage: `url(${url}` }}
-        >
-            <img src={url} alt={alt} className={styles.image} />
-        </figure>
-    )
-}
-
-export default function DetailsModal({ isOpen, isSelected, onClick, setModal, shoe }) {
+export default function DetailsModal({ isOpen, isSelected, setModal, shoe }) {
     const {
+        actionComponent,
         name,
         description,
         images,
     } = shoe
-
-    const [isAdding, setIsAdding] = useState(false)
-    const handleClick = event => {
-        event.preventDefault()
-        onClick({
-            name,
-            images,
-        })
-        setIsAdding(true)
-        setTimeout(setIsAdding, 2500, false)
-    }
 
     const toggleModal = () => {
         setModal({
@@ -42,6 +22,7 @@ export default function DetailsModal({ isOpen, isSelected, onClick, setModal, sh
 
     return (
         <ReactModal
+            appElement={document.getElementById('main')}
             isOpen={isOpen}
             onRequestClose={toggleModal}
             style={{
@@ -69,19 +50,11 @@ export default function DetailsModal({ isOpen, isSelected, onClick, setModal, sh
                     <h2 className={styles.title}>{RichText.asText(name.raw)}</h2>
                     <RichText render={description.raw} />
                     <div className={styles.actions}>
-                        <AddButton
-                            handleClick={handleClick}
-                            isAdding={isAdding}
-                            isSelected={isSelected}
-                            productName={RichText.asText(name.raw)}
-                        />
+                        {actionComponent}
                     </div>
                 </div>
                 <div className={styles.imageGrid}>
-                    {images.map((image, index) => <DetailImage
-                        url={image.item_image.url}
-                        alt={image.item_image.alt}
-                    />)}
+                    <ImageGrid images={images} />
                 </div>
             </div>
         </ReactModal>

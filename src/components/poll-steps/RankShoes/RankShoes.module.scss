@@ -9,6 +9,12 @@
     }
 }
 
+.detailsButton {
+    color: var(--color-dark-grey);
+    font-size: var(--font-size-small);
+    padding: 0 var(--spacing-half);
+}
+
 .error {
     text-align: center;
 }

@@ -1,10 +1,9 @@
 import React, { useState } from 'react'
 import { scroller } from 'react-scroll'
 
-import { Layout, PageHeader, Button } from '@components/common'
-import ShoeCard from './ShoeCard'
-import DetailsModal from './DetailsModal'
 import * as styles from './SelectShoes.module.scss'
+import { DetailsModal, Layout, PageHeader, Button } from '@components/common'
+import ShoeCard from './ShoeCard'
 
 export default function SelectShoes({
     buttonText,
@@ -14,15 +13,17 @@ export default function SelectShoes({
     shoes,
     title,
 }) {
+    console.log(shoes)
     const [errorMessage, setErrorMessage] = useState(null)
     const [modal, setModal] = useState({
         isOpen: false,
         shoe: {
+            actionComponent: null,
             name: {
-                raw: null,
+                raw: [],
             },
             description: {
-                raw: null,
+                raw: [],
             },
             images: [],
         },
@@ -48,8 +49,8 @@ export default function SelectShoes({
             shoe,
         ]
 
-        if (selectedShoes.filter(item => item.name === shoe.name).length > 0) {
-            filteredArray = selectedShoes.filter(item => item.name !== shoe.name)
+        if (selectedShoes.filter(item => item.primary.item_name === shoe.primary.item_name).length > 0) {
+            filteredArray = selectedShoes.filter(item => item.primary.item_name !== shoe.primary.item_name)
         }
 
         if (filteredArray.length <= 5) {
@@ -84,11 +85,9 @@ export default function SelectShoes({
                 />
                 <ul className={styles.itemGrid}>
                     {shoes.map((shoe, index) => <ShoeCard
-                        description={shoe.primary.item_description}
-                        images={shoe.items}
-                        isSelected={selectedShoes.filter(item => item.name === shoe.primary.item_name).length > 0}
-                        name={shoe.primary.item_name}
+                        isSelected={selectedShoes.filter(item => item.primary.item_name === shoe.primary.item_name).length > 0}
                         onClick={updateSelectedShoes}
+                        shoe={shoe}
                         setModal={setModal}
                         key={index}
                     />)}

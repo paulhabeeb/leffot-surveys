@@ -3,20 +3,25 @@ import * as Yup from 'yup'
 import { RichText } from 'prismic-reactjs'
 
 import * as styles from './RankShoes.module.scss'
-import { Layout, PageHeader } from '@components/common'
+import { Layout, PageHeader, ShowDetailsButton } from '@components/common'
 import RankForm from './RankForm'
 import RankItem from './RankItem'
 
 export default function RankShoes({
+    actionComponentFunction,
     buttonText,
     description,
     errorMessage,
-    selections,
+    requireEnoughShoes,
+    shoes,
     title,
 }) {
-    let hasEnoughSelections = false
-    if (selections.length === 5) {
-        hasEnoughSelections = true
+    let hasEnoughShoes = false
+    if (
+        (shoes.length === 5 && requireEnoughShoes)
+        || !requireEnoughShoes
+    ) {
+        hasEnoughShoes = true
     }
 
     const initialValues = {
@@ -29,31 +34,38 @@ export default function RankShoes({
     const validationSchema = {
         firstName: Yup.string(),
         lastName: Yup.string(),
-        email: Yup.string().when('joinEmailList', {
-            is: true,
-            then: Yup.string()
-                .email('Please enter a valid email address')
-                .required('You must enter a valid email address if you’d like to subscribe to our mailing list'),
-            otherwise: Yup.string().email('Please enter a valid email address'),
-        }),
+        email: Yup.string().email('Please enter a valid email address').required('Please enter a valid email address'),
         joinEmailList: Yup.boolean(),
         comments: Yup.string(),
     }
-    const initialSelections = {}
-    let selectionsList = []
+    const initialShoes = {}
+    let shoesList = []
 
-    if (selections) {
-        selections.forEach(selection => {
-            const name = RichText.asText(selection.name.raw)
-            initialSelections[name] = undefined
+    if (shoes) {
+        shoes.forEach(shoe => {
+            const name = RichText.asText(shoe.primary.item_name.raw)
+            initialShoes[name] = undefined
             validationSchema[name] = Yup.string().required('Please select a rank')
         })
 
-        selectionsList = selections.map((item, index) => <RankItem
-            name={RichText.asText(item.name.raw)}
-            image={item.images[0].item_image}
-            key={index}
-        />)
+        shoesList = shoes.map((shoe, index) => {
+            const actionComponent = <ShowDetailsButton
+                caption='Show details'
+                setModal={actionComponentFunction}
+                shoe={shoe}
+                styles={styles.detailsButton}
+            />
+
+            return (
+                <RankItem
+                    actionComponent={actionComponent}
+                    description={shoe.primary.item_description}
+                    name={RichText.asText(shoe.primary.item_name.raw)}
+                    images={shoe.items}
+                    key={index}
+                />
+            )
+        })
     }
 
     return (
@@ -62,13 +74,13 @@ export default function RankShoes({
                 <PageHeader
                     alignCenter={true}
                     title={title}
-                    description={hasEnoughSelections ? description : errorMessage}
+                    description={hasEnoughShoes ? description : errorMessage}
                 />
-                {hasEnoughSelections && <RankForm
+                {hasEnoughShoes && <RankForm
                     buttonText={buttonText}
-                    initialSelections={initialSelections}
+                    initialShoes={initialShoes}
                     initialValues={initialValues}
-                    selectionsList={selectionsList}
+                    shoesList={shoesList}
                     validationSchema={validationSchema}
                 />}
             </div>

@@ -123,39 +123,6 @@
             }
         }
     },
-    "Top Five": {
-        "top_section_title": {
-            "type": "StructuredText",
-            "config": {
-                "single": "heading1, heading2, heading3, heading4, heading5, heading6",
-                "label": "Section Title",
-                "placeholder": "Page Title"
-            }
-        },
-        "top_section_description": {
-            "type": "StructuredText",
-            "config": {
-                "multi": "paragraph, preformatted, heading1, heading2, heading3, heading4, heading5, heading6, strong, em, hyperlink, image, embed, list-item, o-list-item, rtl",
-                "label": "Section description",
-                "placeholder": "Page Description"
-            }
-        },
-        "not_enough_shoes": {
-            "type": "StructuredText",
-            "config": {
-                "multi": "paragraph, preformatted, strong, em, hyperlink",
-                "label": "Not enough shoes",
-                "placeholder": "Not enough shoes"
-            }
-        },
-        "submit_button_text": {
-            "type": "Text",
-            "config": {
-                "label": "Submit Button Text",
-                "placeholder": "Submit Button Text"
-            }
-        }
-    },
     "Meta": {
         "uid": {
             "type": "UID",

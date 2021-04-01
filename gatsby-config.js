@@ -30,6 +30,8 @@ module.exports = {
             options: {
                 repositoryName: 'leffot-polls',
                 schemas: {
+                    rank_some_shoes: require('./src/schemas/rank_some_shoes.json'),
+                    success_page: require('./src/schemas/success_page.json'),
                     top_five_shoes: require('./src/schemas/top_five_shoes.json'),
                 },
             },

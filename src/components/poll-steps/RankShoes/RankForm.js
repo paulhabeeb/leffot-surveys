@@ -12,9 +12,9 @@ import { Button, CheckboxInput, Textarea, TextInput } from '@components/common'
 
 export default function RankForm({
     buttonText,
-    initialSelections,
+    initialShoes,
     initialValues,
-    selectionsList,
+    shoesList,
     validationSchema,
 }) {
     const formName = 'alden-poll-march-2021'
@@ -42,6 +42,11 @@ export default function RankForm({
     }
 
     const handleSubmit = async (values, { resetForm, setStatus, setSubmitting }) => {
+        const response = await axios.get(`/.netlify/functions/queryForms?formName=${formName}`)
+        // console.log(JSON.parse(sites))
+        const sites = response.data
+        console.log(sites)
+
         try {
             const response = await axios({
                 method: 'post',
@@ -69,7 +74,7 @@ export default function RankForm({
         <Formik
             initialValues={{
                 ...initialValues,
-                ...initialSelections,
+                ...initialShoes,
             }}
             validationSchema={Yup.object().shape(validationSchema)}
             onSubmit={handleSubmit}
@@ -82,7 +87,7 @@ export default function RankForm({
                     <input type='hidden' name='rank-4' value='' />
                     <input type='hidden' name='rank-5' value='' />
                     <ul className={styles.listContainer}>
-                        {selectionsList}
+                        {shoesList}
                     </ul>
                     <div className={styles.textInputContainer}>
                         <h2 className={styles.tellUs}>Tell us about yourself</h2>

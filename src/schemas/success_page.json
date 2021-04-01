@@ -1,0 +1,64 @@
+{
+    "Main": {
+        "title": {
+            "type": "StructuredText",
+            "config": {
+                "single": "heading1, heading2, heading3, heading4, heading5, heading6",
+                "label": "Title",
+                "placeholder": "Title"
+            }
+        },
+        "caption": {
+            "type": "StructuredText",
+            "config": {
+                "multi": "paragraph, preformatted, heading1, heading2, heading3, heading4, heading5, heading6, strong, em, hyperlink, image, embed, list-item, o-list-item, rtl",
+                "label": "Caption",
+                "placeholder": "Caption"
+            }
+        },
+        "link_label": {
+            "type": "Text",
+            "config": {
+                "label": "Link label",
+                "placeholder": "Link label"
+            }
+        },
+        "link": {
+            "type": "Link",
+            "config": {
+                "label": "Link",
+                "placeholder": "Link"
+            }
+        }
+    },
+    "Meta": {
+        "uid": {
+            "type": "UID",
+            "config": {
+                "label": "UID",
+                "placeholder": "UID"
+            }
+        },
+        "page_title": {
+            "type": "Text",
+            "config": {
+                "label": "Page Title",
+                "placeholder": "Page Title"
+            }
+        },
+        "page_description": {
+            "type": "Text",
+            "config": {
+                "label": "Page Description",
+                "placeholder": "Page Description"
+            }
+        },
+        "page_url": {
+            "type": "Text",
+            "config": {
+                "label": "Page URL",
+                "placeholder": "Page URL"
+            }
+        }
+    }
+}

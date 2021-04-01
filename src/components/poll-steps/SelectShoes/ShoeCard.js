@@ -1,41 +1,34 @@
 import React, { useState } from 'react'
 import { RichText } from 'prismic-reactjs'
+
 import cn from 'classnames'
 import * as styles from './ShoeCard.module.scss'
-import AddButton from './AddButton'
+import { ShowDetailsButton } from '@components/common'
+import AddButton from './'
 
 export default function ShoeCard({
-    description,
-    images,
     isSelected,
-    name,
     onClick,
     setModal,
+    shoe,
 }) {
     const [isAdding, setIsAdding] = useState(false)
+
     const handleClick = event => {
         event.preventDefault()
-        onClick({
-            name,
-            images,
-        })
+        onClick(shoe)
         setIsAdding(true)
         setTimeout(setIsAdding, 2500, false)
     }
-    const handleDetailsClick = event => {
-        event.preventDefault()
-        setModal({
-            isOpen: true,
-            shoe: {
-                name: name,
-                description: description,
-                images,
-            },
-        })
-    }
 
-    const title = RichText.asText(name.raw)
-    const wrapper = { backgroundImage: `url(${images[0].item_image.url})` }
+    const title = RichText.asText(shoe.primary.item_name.raw)
+    const wrapper = { backgroundImage: `url(${shoe.items[0].item_image.url})` }
+    const addButton = <AddButton
+        handleClick={handleClick}
+        isAdding={isAdding}
+        isSelected={isSelected}
+        productName={title}
+    />
 
     return (
         <li>
@@ -48,27 +41,20 @@ export default function ShoeCard({
             >
                 <img
                     className={styles.img}
-                    src={images[0].item_image.url}
-                    alt={images[0].item_image.alt}
+                    src={shoe.items[0].item_image.url}
+                    alt={shoe.items[0].item_image.alt}
                 />
             </div>
             <div>
                 <h2 className={styles.title}>{title}</h2>
                 <div className={styles.actions}>
-                    <AddButton
-                        handleClick={handleClick}
-                        isAdding={isAdding}
-                        isSelected={isSelected}
-                        productName={title}
+                    {addButton}
+                    <ShowDetailsButton
+                        caption='Details'
+                        setModal={setModal}
+                        shoe={shoe}
+                        styles={styles.infoButton}
                     />
-                    <button
-                        type='button'
-                        className={styles.infoButton}
-                        onClick={handleDetailsClick}
-                        onKeyPress={handleDetailsClick}
-                    >
-                        Details
-                    </button>
                 </div>
             </div>
         </li>
