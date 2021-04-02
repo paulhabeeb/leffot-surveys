@@ -2,14 +2,14 @@ import React from 'react'
 import { graphql } from 'gatsby'
 
 import * as styles from './Success.module.scss'
-import { Layout, PageHeader, Seo } from '@components/common'
+import { Layout, PageHeader, PageHelmet } from '@components/common'
 
 export default function Success({ data }) {
     const pageData = data.prismicSuccessPage.data
 
     return (
         <main>
-            <Seo
+            <PageHelmet
                 title={pageData.page_title}
                 description={pageData.page_description}
                 url={pageData.page_url}

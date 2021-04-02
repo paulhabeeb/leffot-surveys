@@ -1,11 +1,11 @@
 import React from 'react'
 import * as styles from './index.module.scss'
-import { Seo } from '@components/common'
+import { PageHelmet } from '@components/common'
 
 export default function Home() {
     return (
         <main className={styles.container}>
-            <Seo
+            <PageHelmet
                 title='Leffot'
                 url='/'
             />

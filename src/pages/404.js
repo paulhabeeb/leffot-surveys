@@ -3,12 +3,12 @@ import { Link } from 'gatsby'
 
 import cn from 'classnames'
 import * as styles from './index.module.scss'
-import { Seo } from '@components/common'
+import { PageHelmet } from '@components/common'
 
 export default function FourOhFour() {
     return (
         <main className={styles.container}>
-            <Seo
+            <PageHelmet
                 title='404 Error - Page Not Found'
                 url='/404'
             />

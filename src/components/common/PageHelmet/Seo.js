@@ -1,7 +1,7 @@
 import React from 'react'
 import { Helmet } from 'react-helmet'
 
-export default function Seo({ description, image, title, url }) {
+export default function PageHelmet({ description, image, title, url }) {
     return (
         <Helmet>
             {/* General tags */}

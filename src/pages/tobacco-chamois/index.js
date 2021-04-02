@@ -1,6 +1,6 @@
 import React from 'react'
 import { graphql } from 'gatsby'
-import { Seo, SurveyWrapper } from '@components/common'
+import { PageHelmet, SurveyWrapper } from '@components/common'
 import { RankShoesWithModal, SplashPage } from '@components/poll-steps'
 
 export default function Home({ data }) {
@@ -14,7 +14,7 @@ export default function Home({ data }) {
 
     return (
         <main id='main'>
-            <Seo
+            <PageHelmet
                 title={pageData.page_title}
                 description={pageData.page_description}
                 url={pageData.page_url}
