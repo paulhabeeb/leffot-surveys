@@ -3,7 +3,7 @@ import { useField, useFormikContext } from 'formik'
 
 import cn from 'classnames'
 import * as styles from './RankItem.module.scss'
-import { ErrorMessage } from '@components/common'
+import { ErrorMessage } from '@components/forms'
 
 export default function RankItem({ actionComponent, description, images, name }) {
     const slugName = name.replace(' ', '-').toLowerCase()
@@ -59,7 +59,7 @@ export default function RankItem({ actionComponent, description, images, name })
                     alt={images[0].item_image.alt}
                     className={styles.image}
                 />
-                <div>
+                <div className={styles.details}>
                     <div className={styles.name}>{name}</div>
                     {actionComponent}
                 </div>

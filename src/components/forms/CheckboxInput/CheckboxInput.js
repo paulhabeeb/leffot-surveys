@@ -1,7 +1,7 @@
 import React from 'react'
 import { useField } from 'formik'
 import * as styles from './CheckboxInput.module.scss'
-import { ErrorMessage, InputWrapper } from '@components/common'
+import { ErrorMessage, InputWrapper } from '@components/forms'
 
 export default function CheckboxInput({ children, name }) {
     const [field, meta] = useField({

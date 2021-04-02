@@ -15,13 +15,6 @@
                 "label": "Poll description",
                 "placeholder": "Poll description"
             }
-        },
-        "main_button_text": {
-            "type": "Text",
-            "config": {
-                "label": "Main Button Text",
-                "placeholder": "Main Button Text"
-            }
         }
     },
     "Shoes": {

@@ -7,6 +7,7 @@ export default function RankShoesWithModal({
     description,
     errorMessage,
     requireEnoughShoes,
+    sectionName,
     shoes,
     title,
 }) {
@@ -30,8 +31,9 @@ export default function RankShoesWithModal({
                 buttonText={buttonText}
                 description={description}
                 requireEnoughShoes={requireEnoughShoes}
-                title={title}
+                sectionName={sectionName}
                 shoes={shoes}
+                title={title}
             />
             <DetailsModal
                 isOpen={modal.isOpen}

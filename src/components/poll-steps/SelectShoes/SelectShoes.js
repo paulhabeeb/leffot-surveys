@@ -2,18 +2,19 @@ import React, { useState } from 'react'
 import { scroller } from 'react-scroll'
 
 import * as styles from './SelectShoes.module.scss'
-import { DetailsModal, Layout, PageHeader, Button } from '@components/common'
+import { DetailsModal, SectionTitle, Button } from '@components/common'
 import ShoeCard from './ShoeCard'
 
 export default function SelectShoes({
     buttonText,
     description,
+    linkDestination,
+    sectionName,
     selectedShoes,
     setSelectedShoes,
     shoes,
     title,
 }) {
-    console.log(shoes)
     const [errorMessage, setErrorMessage] = useState(null)
     const [modal, setModal] = useState({
         isOpen: false,
@@ -66,9 +67,7 @@ export default function SelectShoes({
         if (selectedShoes.length !== 5) {
             updateErrorMessage(selectedShoes.length, true)
         } else {
-            const destination = 'rank-shoes'
-
-            scroller.scrollTo(destination, {
+            scroller.scrollTo(linkDestination, {
                 duration: 300,
                 smooth: 'easeInOutQuint',
             })
@@ -76,12 +75,11 @@ export default function SelectShoes({
     }
 
     return (
-        <Layout id='pick-five'>
+        <>
             <div className={styles.container}>
-                <PageHeader
-                    alignCenter={true}
-                    title={title}
+                <SectionTitle
                     description={description}
+                    title={title}
                 />
                 <ul className={styles.itemGrid}>
                     {shoes.map((shoe, index) => <ShoeCard
@@ -109,6 +107,6 @@ export default function SelectShoes({
                 setModal={setModal}
                 shoe={modal.shoe}
             />
-        </Layout>
+        </>
     )
 }

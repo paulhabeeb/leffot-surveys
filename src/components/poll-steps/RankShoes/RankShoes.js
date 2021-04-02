@@ -3,7 +3,7 @@ import * as Yup from 'yup'
 import { RichText } from 'prismic-reactjs'
 
 import * as styles from './RankShoes.module.scss'
-import { Layout, PageHeader, ShowDetailsButton } from '@components/common'
+import { SectionTitle, ShowDetailsButton } from '@components/common'
 import RankForm from './RankForm'
 import RankItem from './RankItem'
 
@@ -13,6 +13,7 @@ export default function RankShoes({
     description,
     errorMessage,
     requireEnoughShoes,
+    sectionName,
     shoes,
     title,
 }) {
@@ -69,12 +70,11 @@ export default function RankShoes({
     }
 
     return (
-        <Layout id='rank-shoes'>
+        <>
             <div className={styles.container}>
-                <PageHeader
-                    alignCenter={true}
-                    title={title}
+                <SectionTitle
                     description={hasEnoughShoes ? description : errorMessage}
+                    title={title}
                 />
                 {hasEnoughShoes && <RankForm
                     buttonText={buttonText}
@@ -84,6 +84,6 @@ export default function RankShoes({
                     validationSchema={validationSchema}
                 />}
             </div>
-        </Layout>
+        </>
     )
 }

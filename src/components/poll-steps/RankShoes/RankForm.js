@@ -1,6 +1,5 @@
 import React from 'react'
 import { navigate } from 'gatsby'
-import { cookieName, getCookieValue, setCookie } from '@lib/cookies'
 
 import { Form, Formik } from 'formik'
 import * as Yup from 'yup'
@@ -8,7 +7,8 @@ import axios from 'axios'
 import qs from 'qs'
 
 import * as styles from './RankForm.module.scss'
-import { Button, CheckboxInput, Textarea, TextInput } from '@components/common'
+import { Button } from '@components/common'
+import { CheckboxInput, Textarea, TextInput } from '@components/forms'
 
 export default function RankForm({
     buttonText,
@@ -57,10 +57,6 @@ export default function RankForm({
 
             console.log(response)
 
-            const allowedCookies = getCookieValue(cookieName.consent)
-            if (allowedCookies) {
-                setCookie(cookieName.voted, true)
-            }
             navigate('/success')
         } catch (error) {
             console.log(error)
@@ -97,14 +93,12 @@ export default function RankForm({
                                 name='firstName'
                                 type='text'
                                 placeholder='First name'
-                                status='Optional'
                             />
                             <TextInput
                                 label='Last name'
                                 name='lastName'
                                 type='text'
                                 placeholder='Last name'
-                                status='Optional'
                             />
                         </div>
                         <TextInput
@@ -112,7 +106,7 @@ export default function RankForm({
                             name='email'
                             type='text'
                             placeholder='you@example.com'
-                            status='Optional'
+                            status='Required'
                         />
                         <CheckboxInput name='joinEmailList'>
                             Join our mailing list to receive news, etc.
@@ -121,7 +115,6 @@ export default function RankForm({
                             label='Leave a comment'
                             name='comments'
                             placeholder='Hoping for a different model? Have other thoughts? Let us know.'
-                            status='Optional'
                         />
                     </div>
                     <div className={styles.actions}>

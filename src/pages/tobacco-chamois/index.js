@@ -1,6 +1,6 @@
 import React from 'react'
 import { graphql } from 'gatsby'
-import { Seo } from '@components/common'
+import { Seo, SurveyWrapper } from '@components/common'
 import { RankShoesWithModal, SplashPage } from '@components/poll-steps'
 
 export default function Home({ data }) {
@@ -21,17 +21,19 @@ export default function Home({ data }) {
                 image={pageData.page_image.url}
             />
             <SplashPage
-                buttonText={pageData.main_button_text}
                 description={pageData.poll_description.raw}
                 title={pageData.title.raw}
             />
-            <RankShoesWithModal
-                buttonText={pageData.shoes_button_text}
-                description={pageData.shoes_section_description.raw}
-                requireEnoughShoes={requireEnoughShoes}
-                title={pageData.shoe_section_title.raw}
-                shoes={pageData.body}
-            />
+            <SurveyWrapper>
+                <RankShoesWithModal
+                    buttonText={pageData.shoes_button_text}
+                    description={pageData.shoes_section_description.raw}
+                    requireEnoughShoes={requireEnoughShoes}
+                    sectionName='section-one'
+                    shoes={pageData.body}
+                    title={pageData.shoe_section_title.raw}
+                />
+            </SurveyWrapper>
         </main>
     )
 }
@@ -45,7 +47,6 @@ export const query = graphql`
                 node {
                     type
                     data {
-                        main_button_text
                         page_description
                         title {
                             raw

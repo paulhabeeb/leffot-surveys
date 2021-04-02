@@ -2,10 +2,10 @@ import React from 'react'
 import { useField } from 'formik'
 
 import cn from 'classnames'
-import * as styles from './TextInput.module.scss'
-import { ErrorMessage, InputLabel, InputWrapper } from '@components/common'
+import * as styles from './Textarea.module.scss'
+import { ErrorMessage, InputLabel, InputWrapper } from '@components/forms'
 
-export default function TextInput({ label, status, ...props }) {
+export default function Textarea({ label, status, ...props }) {
     const [field, meta] = useField(props)
 
     return (
@@ -15,7 +15,7 @@ export default function TextInput({ label, status, ...props }) {
                 status={status}
                 {...props}
             />
-            <input
+            <textarea
                 {...field}
                 {...props}
                 className={cn(

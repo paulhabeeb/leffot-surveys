@@ -1,8 +1,7 @@
 import React, { useState } from 'react'
-import { graphql, navigate } from 'gatsby'
-import { cookieName, getCookieValue } from '@lib/cookies'
+import { graphql } from 'gatsby'
 
-import { CookieBanner, Seo } from '@components/common'
+import { Seo, SurveyWrapper } from '@components/common'
 import { RankShoes, SelectShoes, SplashPage } from '@components/poll-steps'
 
 export default function Home({ data }) {
@@ -15,11 +14,6 @@ export default function Home({ data }) {
         requireEnoughShoes = true
     }
 
-    if (getCookieValue(cookieName.voted)) {
-        navigate('/success')
-        return null
-    }
-
     return (
         <main id='main'>
             <Seo
@@ -29,27 +23,30 @@ export default function Home({ data }) {
                 image={pageData.page_image.url}
             />
             <SplashPage
-                buttonText={pageData.main_button_text}
                 description={pageData.poll_description.raw}
                 title={pageData.title.raw}
             />
-            <SelectShoes
-                buttonText={pageData.shoes_button_text}
-                description={pageData.shoes_section_description.raw}
-                selectedShoes={selections}
-                setSelectedShoes={setSelections}
-                shoes={pageData.body}
-                title={pageData.shoe_section_title.raw}
-            />
-            <RankShoes
-                buttonText={pageData.submit_button_text}
-                description={pageData.top_section_description.raw}
-                errorMessage={pageData.not_enough_shoes.raw}
-                requireEnoughShoes={requireEnoughShoes}
-                shoes={selections}
-                title={pageData.top_section_title.raw}
-            />
-            <CookieBanner />
+            <SurveyWrapper>
+                <SelectShoes
+                    buttonText={pageData.shoes_button_text}
+                    description={pageData.shoes_section_description.raw}
+                    linkDestination='section-two'
+                    sectionName='section-one'
+                    selectedShoes={selections}
+                    setSelectedShoes={setSelections}
+                    shoes={pageData.body}
+                    title={pageData.shoe_section_title.raw}
+                />
+                <RankShoes
+                    buttonText={pageData.submit_button_text}
+                    description={pageData.top_section_description.raw}
+                    errorMessage={pageData.not_enough_shoes.raw}
+                    requireEnoughShoes={requireEnoughShoes}
+                    sectionName='section-two'
+                    shoes={selections}
+                    title={pageData.top_section_title.raw}
+                />
+            </SurveyWrapper>
         </main>
     )
 }
@@ -73,7 +70,6 @@ export const query = graphql`
                         poll_description {
                             raw
                         }
-                        main_button_text
                         shoe_section_title {
                             raw
                         }

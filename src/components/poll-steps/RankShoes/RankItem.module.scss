@@ -31,11 +31,14 @@
     }
 }
 
-.name {
+.details {
     flex-grow: 1;
+    padding: 0 var(--spacing-half);
+}
+
+.name {
     font-size: var(--font-size-medium-small);
     font-weight: var(--font-weight-sans-medium);
-    padding: 0 var(--spacing-half);
 }
 
 .selectRank {

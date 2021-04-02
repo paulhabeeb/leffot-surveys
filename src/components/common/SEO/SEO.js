@@ -8,6 +8,7 @@ export default function Seo({ description, image, title, url }) {
             {title && <title>{title}</title>}
             {description && <meta name="description" content={description} />}
             {image && <meta name="image" content={image} />}
+            <link key="icon" rel="icon" href="/favicon.png" />
 
             {/* OpenGraph tags */}
             {url && <meta property="og:url" content={url} />}

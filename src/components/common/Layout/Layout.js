@@ -5,13 +5,9 @@ import * as styles from './Layout.module.scss'
 export default function Layout({ children, id }) {
     const className = cn(
         styles.container,
-        {
-            [styles.whiteBorder]: id === 'splash-page',
-            [styles.darkGreyBorder]: id === 'pick-five',
-            [styles.primaryBorder]: id === 'rank-shoes',
-        },
+        { [styles.whiteBorder]: id === 'splash-page' },
     )
-    
+
     return (
         <section className={className} id={id}>
             {children}

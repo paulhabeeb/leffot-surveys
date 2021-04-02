@@ -4,7 +4,7 @@ import { RichText } from 'prismic-reactjs'
 import cn from 'classnames'
 import * as styles from './ShoeCard.module.scss'
 import { ShowDetailsButton } from '@components/common'
-import AddButton from './'
+import AddButton from './AddButton'
 
 export default function ShoeCard({
     isSelected,

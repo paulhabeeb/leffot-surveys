@@ -22,7 +22,6 @@ export default function DetailsModal({ isOpen, isSelected, setModal, shoe }) {
 
     return (
         <ReactModal
-            appElement={document.getElementById('main')}
             isOpen={isOpen}
             onRequestClose={toggleModal}
             style={{

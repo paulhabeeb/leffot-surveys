@@ -16,9 +16,9 @@ export default function Success({ data }) {
             />
             <Layout>
                 <PageHeader
-                    title={pageData.title.raw}
                     description={pageData.caption.raw}
-                    alignCenter={true}
+                    isH1={true}
+                    title={pageData.title.raw}
                 />
                 <a href={pageData.link.url} className={styles.shop}>
                     {pageData.link_label}
