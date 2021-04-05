@@ -171,13 +171,6 @@
                 "placeholder": "Page Description"
             }
         },
-        "page_url": {
-            "type": "Text",
-            "config": {
-                "label": "Page URL",
-                "placeholder": "Page URL"
-            }
-        },
         "page_image": {
             "type": "Image",
             "config": {

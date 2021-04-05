@@ -7,13 +7,14 @@ import { Layout, PageHeader, PageHelmet } from '@components/common'
 
 export default function Success({ data }) {
     const pageData = data.prismicSuccessPage.data
+    const uid = data.prismicSuccessPage.uid
 
     return (
         <main>
             <PageHelmet
                 title={pageData.page_title}
                 description={pageData.page_description}
-                url={pageData.page_url}
+                url={uid}
             />
             <Layout>
                 <PageHeader
@@ -36,6 +37,7 @@ Success.propTypes = {
 export const query = graphql`
     query SuccessQuery {
         prismicSuccessPage {
+            uid
             data {
                 link_label
                 caption {
@@ -49,7 +51,6 @@ export const query = graphql`
                 }
                 page_title
                 page_description
-                page_url
             }
         }
     }

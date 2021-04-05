@@ -12,7 +12,12 @@ export default function PageHelmet({ description, image, title, url }) {
             <link key='icon' rel='icon' href='/favicon.png' />
 
             {/* OpenGraph tags */}
-            {url && <meta property='og:url' content={url} />}
+            {url && (
+                <meta
+                    property='og:url'
+                    content={`https://surveys.leffot.com/${url}`}
+                />
+            )}
             {title && <meta property='og:title' content={title} />}
             {description && (
                 <meta property='og:description' content={description} />

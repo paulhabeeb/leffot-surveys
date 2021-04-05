@@ -7,13 +7,14 @@ import { RankShoesWithModal, SplashPage } from '@components/poll-steps'
 
 export default function RankSomeShoes({ data }) {
     const pageData = data.allPrismicRankSomeShoes.edges[0].node.data
+    const uid = data.allPrismicRankSomeShoes.edges[0].node.uid
 
     return (
         <main id='main'>
             <PageHelmet
                 title={pageData.page_title}
                 description={pageData.page_description}
-                url={pageData.page_url}
+                url={uid}
                 image={pageData.page_image.url}
             />
             <SplashPage
@@ -43,6 +44,7 @@ export const query = graphql`
         allPrismicRankSomeShoes(filter: { uid: { eq: $uid } }) {
             edges {
                 node {
+                    uid
                     data {
                         page_description
                         title {
@@ -58,7 +60,6 @@ export const query = graphql`
                         poll_description {
                             raw
                         }
-                        page_url
                         page_title
                         page_image {
                             url

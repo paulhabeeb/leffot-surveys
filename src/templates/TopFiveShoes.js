@@ -7,6 +7,7 @@ import { RankShoes, SelectShoes, SplashPage } from '@components/poll-steps'
 
 export default function TopFiveShoes({ data }) {
     const pageData = data.allPrismicTopFiveShoes.edges[0].node.data
+    const uid = data.allPrismicTopFiveShoes.edges[0].node.uid
     const [selections, setSelections] = useState([])
 
     return (
@@ -14,7 +15,7 @@ export default function TopFiveShoes({ data }) {
             <PageHelmet
                 title={pageData.page_title}
                 description={pageData.page_description}
-                url={pageData.page_url}
+                url={uid}
                 image={pageData.page_image.url}
             />
             <SplashPage
@@ -55,10 +56,10 @@ export const query = graphql`
         allPrismicTopFiveShoes(filter: { uid: { eq: $uid } }) {
             edges {
                 node {
+                    uid
                     data {
                         page_title
                         page_description
-                        page_url
                         page_image {
                             url
                         }
