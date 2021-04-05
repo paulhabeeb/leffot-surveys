@@ -6,16 +6,16 @@
 }
 
 .title {
-    font-size: var(--font-size-largest);
+    font-size: var(--font-size-large);
 }
 
 .caption {
-    font-size: var(--font-size-medium-small);
+    font-size: var(--font-size-medium);
     margin-bottom: var(--spacing-double);
 }
 
 .link {
-    font-size: var(--font-size-medium-small);
+    font-size: var(--font-size-medium);
     font-weight: var(--font-weight-sans-bold);
 
     &:hover {

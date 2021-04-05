@@ -1,6 +1,6 @@
 %inputFocus {
     border-color: var(--color-light-grey);
-    box-shadow: 0 0 1px 3px rgba(59, 153, 252, .7);
+    box-shadow: 0 0 1px 3px rgba(59, 153, 252, 0.7);
     box-shadow: 0 0 0 3px -moz-mac-focusring;
     color: var(--color-not-black);
     outline: none;
@@ -9,10 +9,10 @@
 %inputBase {
     border: 1px solid var(--color-light-grey);
     border-radius: 1px;
-    box-shadow: 0 1px 0 1px rgba(0, 0, 0, .04);
+    box-shadow: 0 1px 0 1px rgba(0, 0, 0, 0.04);
     color: var(--color-dark-grey);
     display: block;
-    font-size: var(--font-size-base);
+    font-size: var(--font-size-normal);
     font-family: var(--font-sans);
     font-weight: var(--font-weight-sans-medium);
     line-height: 1.3;

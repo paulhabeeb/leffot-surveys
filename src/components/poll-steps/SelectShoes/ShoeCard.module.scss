@@ -9,7 +9,7 @@
     background-size: 100%;
     border: 3px solid var(--color-lighter-grey);
     height: 0;
-    margin-bottom: .75rem;
+    margin-bottom: 0.75rem;
     padding-top: 100%;
     position: relative;
     transition: all 250ms ease;
@@ -27,7 +27,7 @@
 }
 
 .title {
-    font-size: var(--font-size-medium-small);
+    font-size: var(--font-size-medium);
 }
 
 .actions {

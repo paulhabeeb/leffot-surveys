@@ -17,7 +17,7 @@
 
 .tellUs {
     font-family: var(--font-serif);
-    font-size: var(--font-size-largest);
+    font-size: var(--font-size-large);
     margin-bottom: var(--spacing-single);
     text-align: center;
 }
@@ -39,7 +39,7 @@
     display: flex;
     flex-direction: column;
     justify-content: center;
-    padding-top: var(--spacing-double);
+    padding-top: var(--spacing-single);
 
     @include breakpoint('small') {
         flex-direction: row;
