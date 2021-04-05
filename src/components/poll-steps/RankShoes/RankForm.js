@@ -67,6 +67,12 @@ export default function RankForm({
         }
     }
 
+    const hiddenInputs = []
+    const numberOfHiddenInputs = Object.keys(initialShoes).length
+    for (let i = 1; i <= numberOfHiddenInputs; i++) {
+        hiddenInputs.push(<input type='hidden' name={`rank-${i}`} value='' />)
+    }
+
     return (
         <Formik
             initialValues={{
@@ -78,11 +84,7 @@ export default function RankForm({
         >
             {({ isSubmitting, resetForm, status }) => (
                 <Form name={formName} data-netlify='true'>
-                    <input type='hidden' name='rank-1' value='' />
-                    <input type='hidden' name='rank-2' value='' />
-                    <input type='hidden' name='rank-3' value='' />
-                    <input type='hidden' name='rank-4' value='' />
-                    <input type='hidden' name='rank-5' value='' />
+                    {hiddenInputs}
                     <ul className={styles.listContainer}>{shoesList}</ul>
                     <div className={styles.textInputContainer}>
                         <h2 className={styles.tellUs}>
