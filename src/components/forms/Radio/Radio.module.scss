@@ -1,0 +1,48 @@
+@import 'inputs';
+
+.label {
+    cursor: pointer;
+    padding-left: var(--spacing-single);
+    position: relative;
+
+    &::after,
+    &::before {
+        border-radius: 50%;
+        content: '';
+        position: absolute;
+        transition: all 200ms ease;
+    }
+
+    &::after {
+        background: var(--color-dark-grey);
+        height: var(--spacing-third);
+        left: 5px;
+        top: 5px;
+        transform: scale(0);
+        width: var(--spacing-third);
+    }
+
+    &::before {
+        @extend %inputBase;
+        background-color: var(--color-white);
+        height: var(--spacing-two-thirds);
+        left: 0;
+        margin-right: var(--spacing-third);
+        top: 0;
+        width: var(--spacing-two-thirds);
+    }
+
+    input:checked + & {
+        &::after {
+            transform: scale(1);
+        }
+
+        &::before {
+            border-color: var(--color-dark-grey);
+        }
+    }
+
+    input:focus + &::before {
+        @extend %inputFocus;
+    }
+}

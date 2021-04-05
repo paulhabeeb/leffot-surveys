@@ -1,0 +1,27 @@
+@import 'inputs';
+
+.selectRank {
+    @extend %inputBase;
+    appearance: none;
+    background-color: var(--color-white);
+    background-image: url("data:image/svg+xml;charset=utf8,%3Csvg xmlns='http://www.w3.org/2000/svg' width='24' height='24' viewBox='0 0 24 24'%3E%3Cpath d='M16.59 8.59L12 13.17 7.41 8.59 6 10l6 6 6-6z' fill='rgba(117, 117, 117, 0.999)' /%3E%3C/svg%3E");
+    background-repeat: no-repeat;
+    background-position: right .7em top 50%;
+    background-size: 1.25rem;
+    cursor: pointer;
+    padding: .6em 1.9em .5em .8em;
+    width: 100%;
+
+    &::-ms-expand {
+        display: none;
+    }
+
+    option {
+        font-weight: var(--font-weight-sans-normal);
+    }
+}
+
+.error {
+    position: absolute;
+    text-align: right;
+}

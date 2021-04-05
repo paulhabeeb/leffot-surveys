@@ -1,3 +1,11 @@
+%inputFocus {
+    border-color: var(--color-light-grey);
+    box-shadow: 0 0 1px 3px rgba(59, 153, 252, .7);
+    box-shadow: 0 0 0 3px -moz-mac-focusring;
+    color: var(--color-not-black);
+    outline: none;
+}
+
 %inputBase {
     border: 1px solid var(--color-light-grey);
     border-radius: 1px;
@@ -17,11 +25,7 @@
     }
 
     &:focus {
-        border-color: var(--color-light-grey);
-        box-shadow: 0 0 1px 3px rgba(59, 153, 252, .7);
-        box-shadow: 0 0 0 3px -moz-mac-focusring;
-        color: var(--color-not-black);
-        outline: none;
+        @extend %inputFocus;
     }
 
     &.errorBorder {
