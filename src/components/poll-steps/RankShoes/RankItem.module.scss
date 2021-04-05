@@ -1,23 +1,19 @@
 @import 'mixins';
-@import 'inputs';
 
 .rankItem {
-    border-top: 2px solid var(--color-light-grey);
-    padding: var(--spacing-half) 0;
-
-    &:last-child {
-        border-bottom: 2px solid var(--color-light-grey);
-    }
-}
-
-.flex {
     align-items: center;
+    border-top: 2px solid var(--color-light-grey);
     display: flex;
     flex-wrap: wrap;
     justify-content: space-between;
+    padding: var(--spacing-single) 0;
 
     @include breakpoint('medium') {
         flex-wrap: nowrap;
+    }
+
+    &:last-child {
+        border-bottom: 2px solid var(--color-light-grey);
     }
 }
 
@@ -39,33 +35,4 @@
 .name {
     font-size: var(--font-size-medium-small);
     font-weight: var(--font-weight-sans-medium);
-}
-
-.selectRank {
-    @extend %inputBase;
-    appearance: none;
-    background-color: var(--color-white);
-    background-image: url("data:image/svg+xml;charset=utf8,%3Csvg xmlns='http://www.w3.org/2000/svg' width='24' height='24' viewBox='0 0 24 24'%3E%3Cpath d='M16.59 8.59L12 13.17 7.41 8.59 6 10l6 6 6-6z' fill='rgba(117, 117, 117, 0.999)' /%3E%3C/svg%3E");
-    background-repeat: no-repeat;
-    background-position: right .7em top 50%;
-    background-size: 1.25rem;
-    padding: .6em 1.9em .5em .8em;
-    width: 100%;
-
-    &::-ms-expand {
-        display: none;
-    }
-
-    option {
-        font-weight: var(--font-weight-sans-normal);
-    }
-}
-
-.error {
-    margin-top: var(--spacing-half);
-    text-align: right;
-
-    @include breakpoint('medium') {
-        margin-top: 0;
-    }
 }

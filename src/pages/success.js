@@ -1,4 +1,5 @@
 import React from 'react'
+import PropTypes from 'prop-types'
 import { graphql } from 'gatsby'
 
 import * as styles from './Success.module.scss'
@@ -26,6 +27,10 @@ export default function Success({ data }) {
             </Layout>
         </main>
     )
+}
+
+Success.propTypes = {
+    data: PropTypes.object,
 }
 
 export const query = graphql`

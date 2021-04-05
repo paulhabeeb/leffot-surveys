@@ -1,4 +1,5 @@
 import React, { useState } from 'react'
+import PropTypes from 'prop-types'
 import { RichText } from 'prismic-reactjs'
 
 import cn from 'classnames'
@@ -6,12 +7,7 @@ import * as styles from './ShoeCard.module.scss'
 import { ShowDetailsButton } from '@components/common'
 import AddButton from './AddButton'
 
-export default function ShoeCard({
-    isSelected,
-    onClick,
-    setModal,
-    shoe,
-}) {
+export default function ShoeCard({ isSelected, onClick, setModal, shoe }) {
     const [isAdding, setIsAdding] = useState(false)
 
     const handleClick = event => {
@@ -23,20 +19,21 @@ export default function ShoeCard({
 
     const title = RichText.asText(shoe.primary.item_name.raw)
     const wrapper = { backgroundImage: `url(${shoe.items[0].item_image.url})` }
-    const addButton = <AddButton
-        handleClick={handleClick}
-        isAdding={isAdding}
-        isSelected={isSelected}
-        productName={title}
-    />
+    const addButton = (
+        <AddButton
+            handleClick={handleClick}
+            isAdding={isAdding}
+            isSelected={isSelected}
+            productName={title}
+        />
+    )
 
     return (
         <li>
             <div
-                className={cn(
-                    styles.imgWrapper,
-                    { [styles.isSelected]: isSelected },
-                )}
+                className={cn(styles.imgWrapper, {
+                    [styles.isSelected]: isSelected,
+                })}
                 style={wrapper}
             >
                 <img
@@ -59,6 +56,13 @@ export default function ShoeCard({
             </div>
         </li>
     )
+}
+
+ShoeCard.propTypes = {
+    isSelected: PropTypes.bool,
+    onClick: PropTypes.func,
+    setModal: PropTypes.func,
+    shoe: PropTypes.object,
 }
 
 ShoeCard.defaultProps = {

@@ -1,8 +1,10 @@
 import React, { useState } from 'react'
+import PropTypes from 'prop-types'
 import { scroller } from 'react-scroll'
 
 import * as styles from './SelectShoes.module.scss'
-import { DetailsModal, SectionTitle, Button } from '@components/common'
+import { SectionTitle, Button } from '@components/common'
+import { Details } from '@components/modals'
 import ShoeCard from './ShoeCard'
 
 export default function SelectShoes({
@@ -45,13 +47,16 @@ export default function SelectShoes({
     }
 
     const updateSelectedShoes = shoe => {
-        let filteredArray = [
-            ...selectedShoes,
-            shoe,
-        ]
+        let filteredArray = [...selectedShoes, shoe]
 
-        if (selectedShoes.filter(item => item.primary.item_name === shoe.primary.item_name).length > 0) {
-            filteredArray = selectedShoes.filter(item => item.primary.item_name !== shoe.primary.item_name)
+        if (
+            selectedShoes.filter(
+                item => item.primary.item_name === shoe.primary.item_name
+            ).length > 0
+        ) {
+            filteredArray = selectedShoes.filter(
+                item => item.primary.item_name !== shoe.primary.item_name
+            )
         }
 
         if (filteredArray.length <= 5) {
@@ -77,18 +82,23 @@ export default function SelectShoes({
     return (
         <>
             <div className={styles.container}>
-                <SectionTitle
-                    description={description}
-                    title={title}
-                />
+                <SectionTitle description={description} title={title} />
                 <ul className={styles.itemGrid}>
-                    {shoes.map((shoe, index) => <ShoeCard
-                        isSelected={selectedShoes.filter(item => item.primary.item_name === shoe.primary.item_name).length > 0}
-                        onClick={updateSelectedShoes}
-                        shoe={shoe}
-                        setModal={setModal}
-                        key={index}
-                    />)}
+                    {shoes.map((shoe, index) => (
+                        <ShoeCard
+                            isSelected={
+                                selectedShoes.filter(
+                                    item =>
+                                        item.primary.item_name ===
+                                        shoe.primary.item_name
+                                ).length > 0
+                            }
+                            onClick={updateSelectedShoes}
+                            shoe={shoe}
+                            setModal={setModal}
+                            key={index}
+                        />
+                    ))}
                 </ul>
                 <div className={styles.actions}>
                     <Button
@@ -100,13 +110,27 @@ export default function SelectShoes({
                     />
                 </div>
             </div>
-            <DetailsModal
+            <Details
                 isOpen={modal.isOpen}
-                isSelected={selectedShoes.filter(item => item.name === modal.shoe.name).length > 0}
+                isSelected={
+                    selectedShoes.filter(item => item.name === modal.shoe.name)
+                        .length > 0
+                }
                 onClick={updateSelectedShoes}
                 setModal={setModal}
                 shoe={modal.shoe}
             />
         </>
     )
+}
+
+SelectShoes.propTypes = {
+    buttonText: PropTypes.string,
+    description: PropTypes.array,
+    linkDestination: PropTypes.string,
+    sectionName: PropTypes.string,
+    selectedShoes: PropTypes.array,
+    setSelectedShoes: PropTypes.func,
+    shoes: PropTypes.array,
+    title: PropTypes.array,
 }

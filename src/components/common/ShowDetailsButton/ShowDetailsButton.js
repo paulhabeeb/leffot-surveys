@@ -1,4 +1,5 @@
 import React from 'react'
+import PropTypes from 'prop-types'
 
 export default function ShowDetailsButton({ caption, setModal, shoe, styles }) {
     if (setModal) {
@@ -29,4 +30,11 @@ export default function ShowDetailsButton({ caption, setModal, shoe, styles }) {
     }
 
     return null
+}
+
+ShowDetailsButton.propTypes = {
+    caption: PropTypes.string,
+    setModal: PropTypes.func,
+    shoe: PropTypes.object,
+    styles: PropTypes.string,
 }

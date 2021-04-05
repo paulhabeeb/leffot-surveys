@@ -1,4 +1,5 @@
 import React from 'react'
+import PropTypes from 'prop-types'
 import { navigate } from 'gatsby'
 
 import { Form, Formik } from 'formik'
@@ -8,7 +9,7 @@ import qs from 'qs'
 
 import * as styles from './RankForm.module.scss'
 import { Button } from '@components/common'
-import { CheckboxInput, Textarea, TextInput } from '@components/forms'
+import { Checkbox, Textarea, TextInput } from '@components/forms'
 
 export default function RankForm({
     buttonText,
@@ -41,17 +42,17 @@ export default function RankForm({
         return qs.stringify(formValues)
     }
 
-    const handleSubmit = async (values, { resetForm, setStatus, setSubmitting }) => {
-        const response = await axios.get(`/.netlify/functions/queryForms?formName=${formName}`)
-        // console.log(JSON.parse(sites))
-        const sites = response.data
-        console.log(sites)
-
+    const handleSubmit = async (
+        values,
+        { resetForm, setStatus, setSubmitting }
+    ) => {
         try {
             const response = await axios({
                 method: 'post',
                 url: '/',
-                headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
+                headers: {
+                    'Content-Type': 'application/x-www-form-urlencoded',
+                },
                 data: getFormData(values),
             })
 
@@ -61,7 +62,8 @@ export default function RankForm({
         } catch (error) {
             console.log(error)
             setStatus({
-                error: 'There was a problem submitting the form. Please try again later.'
+                error:
+                    'There was a problem submitting the form. Please try again later.',
             })
         }
     }
@@ -76,17 +78,17 @@ export default function RankForm({
             onSubmit={handleSubmit}
         >
             {({ isSubmitting, resetForm, status }) => (
-                <Form name={formName} data-netlify="true">
+                <Form name={formName} data-netlify='true'>
                     <input type='hidden' name='rank-1' value='' />
                     <input type='hidden' name='rank-2' value='' />
                     <input type='hidden' name='rank-3' value='' />
                     <input type='hidden' name='rank-4' value='' />
                     <input type='hidden' name='rank-5' value='' />
-                    <ul className={styles.listContainer}>
-                        {shoesList}
-                    </ul>
+                    <ul className={styles.listContainer}>{shoesList}</ul>
                     <div className={styles.textInputContainer}>
-                        <h2 className={styles.tellUs}>Tell us about yourself</h2>
+                        <h2 className={styles.tellUs}>
+                            Tell us about yourself
+                        </h2>
                         <div className={styles.flex}>
                             <TextInput
                                 label='First name'
@@ -108,9 +110,9 @@ export default function RankForm({
                             placeholder='you@example.com'
                             status='Required'
                         />
-                        <CheckboxInput name='joinEmailList'>
+                        <Checkbox name='joinEmailList'>
                             Join our mailing list to receive news, etc.
-                        </CheckboxInput>
+                        </Checkbox>
                         <Textarea
                             label='Leave a comment'
                             name='comments'
@@ -131,9 +133,19 @@ export default function RankForm({
                             onClick={resetForm}
                         />
                     </div>
-                    {status && status.error && <div className={styles.errors}>{status.error}</div>}
+                    {status && status.error && (
+                        <div className={styles.errors}>{status.error}</div>
+                    )}
                 </Form>
             )}
         </Formik>
     )
+}
+
+RankForm.propTypes = {
+    buttonText: PropTypes.string,
+    initialShoes: PropTypes.object,
+    initialValues: PropTypes.object,
+    shoesList: PropTypes.array,
+    validationSchema: PropTypes.object,
 }

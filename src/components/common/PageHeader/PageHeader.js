@@ -1,14 +1,17 @@
 import React from 'react'
+import PropTypes from 'prop-types'
 import { RichText } from 'prismic-reactjs'
 
 import cn from 'classnames'
 import * as styles from './PageHeader.module.scss'
 
-export default function PageHeader({ description, isH1, title, wrapperStyles }) {
-    const wrapper = cn(
-        styles.container,
-        wrapperStyles,
-    )
+export default function PageHeader({
+    description,
+    isH1,
+    title,
+    wrapperStyles,
+}) {
+    const wrapper = cn(styles.container, wrapperStyles)
 
     const plainTitle = RichText.asText(title)
 
@@ -24,4 +27,11 @@ export default function PageHeader({ description, isH1, title, wrapperStyles }) 
             </div>
         </div>
     )
+}
+
+PageHeader.propTypes = {
+    description: PropTypes.array,
+    isH1: PropTypes.bool,
+    title: PropTypes.array,
+    wrapperStyles: PropTypes.string,
 }

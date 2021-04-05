@@ -1,17 +1,13 @@
 import React from 'react'
+import PropTypes from 'prop-types'
 import ReactModal from 'react-modal'
 import { RichText } from 'prismic-reactjs'
 
-import * as styles from './DetailsModal.module.scss'
+import * as styles from './Details.module.scss'
 import ImageGrid from './ImageGrid'
 
-export default function DetailsModal({ isOpen, isSelected, setModal, shoe }) {
-    const {
-        actionComponent,
-        name,
-        description,
-        images,
-    } = shoe
+export default function Details({ isOpen, isSelected, setModal, shoe }) {
+    const { actionComponent, name, description, images } = shoe
 
     const toggleModal = () => {
         setModal({
@@ -32,7 +28,7 @@ export default function DetailsModal({ isOpen, isSelected, setModal, shoe }) {
                     left: 0,
                     right: 0,
                     top: 0,
-                }
+                },
             }}
         >
             <div className={styles.close}>
@@ -46,11 +42,11 @@ export default function DetailsModal({ isOpen, isSelected, setModal, shoe }) {
             </div>
             <div className={styles.container}>
                 <div className={styles.details}>
-                    <h2 className={styles.title}>{RichText.asText(name.raw)}</h2>
+                    <h2 className={styles.title}>
+                        {RichText.asText(name.raw)}
+                    </h2>
                     <RichText render={description.raw} />
-                    <div className={styles.actions}>
-                        {actionComponent}
-                    </div>
+                    <div className={styles.actions}>{actionComponent}</div>
                 </div>
                 <div className={styles.imageGrid}>
                     <ImageGrid images={images} />
@@ -58,4 +54,11 @@ export default function DetailsModal({ isOpen, isSelected, setModal, shoe }) {
             </div>
         </ReactModal>
     )
+}
+
+Details.propTypes = {
+    isOpen: PropTypes.bool,
+    isSelected: PropTypes.bool,
+    setModal: PropTypes.func,
+    shoe: PropTypes.object,
 }

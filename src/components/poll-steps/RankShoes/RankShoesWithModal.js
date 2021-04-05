@@ -1,5 +1,6 @@
 import React, { useState } from 'react'
-import { DetailsModal } from '@components/common'
+import PropTypes from 'prop-types'
+import { Details } from '@components/modals'
 import { RankShoes } from '@components/poll-steps'
 
 export default function RankShoesWithModal({
@@ -24,6 +25,9 @@ export default function RankShoesWithModal({
         },
     })
 
+    const modalIsSelected =
+        shoes.filter(item => item.name === modal.shoe.name).length > 0
+
     return (
         <>
             <RankShoes
@@ -35,12 +39,22 @@ export default function RankShoesWithModal({
                 shoes={shoes}
                 title={title}
             />
-            <DetailsModal
+            <Details
                 isOpen={modal.isOpen}
-                isSelected={shoes.filter(item => item.name === modal.shoe.name).length > 0}
+                isSelected={modalIsSelected}
                 setModal={setModal}
                 shoe={modal.shoe}
             />
         </>
     )
+}
+
+RankShoesWithModal.propTypes = {
+    buttonText: PropTypes.string,
+    description: PropTypes.array,
+    errorMessage: PropTypes.array,
+    requireEnoughShoes: PropTypes.bool,
+    sectionName: PropTypes.string,
+    shoes: PropTypes.array,
+    title: PropTypes.array,
 }

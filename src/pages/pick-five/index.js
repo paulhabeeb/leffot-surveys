@@ -1,16 +1,17 @@
 import React, { useState } from 'react'
+import PropTypes from 'prop-types'
 import { graphql } from 'gatsby'
 
 import { PageHelmet, SurveyWrapper } from '@components/common'
 import { RankShoes, SelectShoes, SplashPage } from '@components/poll-steps'
 
-export default function Home({ data }) {
+export default function PickFive({ data }) {
     const pollType = data.allPrismicTopFiveShoes.edges[0].node.type
     const pageData = data.allPrismicTopFiveShoes.edges[0].node.data
     const [selections, setSelections] = useState([])
 
     let requireEnoughShoes = false
-    if (pollType !== 'rank_some_shoes')  {
+    if (pollType !== 'rank_some_shoes') {
         requireEnoughShoes = true
     }
 
@@ -49,6 +50,10 @@ export default function Home({ data }) {
             </SurveyWrapper>
         </main>
     )
+}
+
+PickFive.propTypes = {
+    data: PropTypes.object,
 }
 
 export const query = graphql`

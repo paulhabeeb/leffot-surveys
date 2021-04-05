@@ -1,4 +1,4 @@
-export { default as CheckboxInput } from './CheckboxInput'
+export { default as Checkbox } from './Checkbox'
 export { default as ErrorMessage } from './ErrorMessage'
 export { default as InputLabel } from './InputLabel'
 export { default as InputWrapper } from './InputWrapper'

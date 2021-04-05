@@ -29,33 +29,26 @@
         opacity: 0;
         text-align: center;
         transform: scale(0);
-        transition: all 50ms ease-out;
+        transition: all 50ms ease;
         width: .875rem;
     }
 
     &::before {
         @extend %inputBase;
         background-color: var(--color-white);
-        border: 1px solid var(--color-light-grey);
-        border-radius: 1px;
         height: var(--spacing-two-thirds);
         left: 0;
         margin-right: .875rem;
         margin-top: -.625rem;
-        transition: all 200ms ease-out;
         width: var(--spacing-two-thirds);
-    }
-
-    input:focus + &::before {
-        border-color: var(--color-light-grey);
-        box-shadow: 0 0 1px 3px rgba(59, 153, 252, .7);
-        box-shadow: 0 0 0 3px -moz-mac-focusring;
-        color: var(--color-not-black);
-        outline: none;
     }
 
     input:checked + &::after {
         opacity: 1;
         transform: scale(1);
+    }
+
+    input:focus + &::before {
+        @extend %inputFocus;
     }
 }
