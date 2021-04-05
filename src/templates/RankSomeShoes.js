@@ -1,17 +1,12 @@
 import React from 'react'
 import PropTypes from 'prop-types'
 import { graphql } from 'gatsby'
+
 import { PageHelmet, SurveyWrapper } from '@components/common'
 import { RankShoesWithModal, SplashPage } from '@components/poll-steps'
 
-export default function TobaccoChamois({ data }) {
-    const pollType = data.allPrismicRankSomeShoes.edges[0].node.type
+export default function RankSomeShoes({ data }) {
     const pageData = data.allPrismicRankSomeShoes.edges[0].node.data
-
-    let requireEnoughShoes = false
-    if (pollType !== 'rank_some_shoes') {
-        requireEnoughShoes = true
-    }
 
     return (
         <main id='main'>
@@ -29,7 +24,7 @@ export default function TobaccoChamois({ data }) {
                 <RankShoesWithModal
                     buttonText={pageData.shoes_button_text}
                     description={pageData.shoes_section_description.raw}
-                    requireEnoughShoes={requireEnoughShoes}
+                    requireEnoughShoes={false}
                     sectionName='section-one'
                     shoes={pageData.body}
                     title={pageData.shoe_section_title.raw}
@@ -39,18 +34,15 @@ export default function TobaccoChamois({ data }) {
     )
 }
 
-TobaccoChamois.propTypes = {
+RankSomeShoes.propTypes = {
     data: PropTypes.object,
 }
 
 export const query = graphql`
-    query TobaccoChamoisQuery {
-        allPrismicRankSomeShoes(
-            filter: { uid: { eq: "tobacco-chamois-apr-21" } }
-        ) {
+    query RankSomeShoesPageQuery($uid: String!) {
+        allPrismicRankSomeShoes(filter: { uid: { eq: $uid } }) {
             edges {
                 node {
-                    type
                     data {
                         page_description
                         title {

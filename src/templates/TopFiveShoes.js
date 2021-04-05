@@ -5,15 +5,9 @@ import { graphql } from 'gatsby'
 import { PageHelmet, SurveyWrapper } from '@components/common'
 import { RankShoes, SelectShoes, SplashPage } from '@components/poll-steps'
 
-export default function PickFive({ data }) {
-    const pollType = data.allPrismicTopFiveShoes.edges[0].node.type
+export default function TopFiveShoes({ data }) {
     const pageData = data.allPrismicTopFiveShoes.edges[0].node.data
     const [selections, setSelections] = useState([])
-
-    let requireEnoughShoes = false
-    if (pollType !== 'rank_some_shoes') {
-        requireEnoughShoes = true
-    }
 
     return (
         <main id='main'>
@@ -42,7 +36,7 @@ export default function PickFive({ data }) {
                     buttonText={pageData.submit_button_text}
                     description={pageData.top_section_description.raw}
                     errorMessage={pageData.not_enough_shoes.raw}
-                    requireEnoughShoes={requireEnoughShoes}
+                    requireEnoughShoes={true}
                     sectionName='section-two'
                     shoes={selections}
                     title={pageData.top_section_title.raw}
@@ -52,16 +46,15 @@ export default function PickFive({ data }) {
     )
 }
 
-PickFive.propTypes = {
+TopFiveShoes.propTypes = {
     data: PropTypes.object,
 }
 
 export const query = graphql`
-    query PickFiveQuery {
-        allPrismicTopFiveShoes(filter: { uid: { eq: "top-five-march-2021" } }) {
+    query TopFiveShoesPageQuery($uid: String!) {
+        allPrismicTopFiveShoes(filter: { uid: { eq: $uid } }) {
             edges {
                 node {
-                    type
                     data {
                         page_title
                         page_description
