@@ -7,6 +7,7 @@ export default function RankShoesWithModal({
     buttonText,
     description,
     errorMessage,
+    formName,
     requireEnoughShoes,
     sectionName,
     shoes,
@@ -33,6 +34,7 @@ export default function RankShoesWithModal({
             <RankShoes
                 actionComponentFunction={setModal}
                 buttonText={buttonText}
+                formName={formName}
                 description={description}
                 requireEnoughShoes={requireEnoughShoes}
                 sectionName={sectionName}

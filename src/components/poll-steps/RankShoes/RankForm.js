@@ -13,13 +13,12 @@ import { Checkbox, Textarea, TextInput } from '@components/forms'
 
 export default function RankForm({
     buttonText,
+    formName,
     initialShoes,
     initialValues,
     shoesList,
     validationSchema,
 }) {
-    const formName = 'alden-poll-march-2021'
-
     const getFormData = values => {
         const formValues = {
             'form-name': formName,

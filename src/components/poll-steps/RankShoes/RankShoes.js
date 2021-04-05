@@ -13,6 +13,7 @@ export default function RankShoes({
     buttonText,
     description,
     errorMessage,
+    formName,
     requireEnoughShoes,
     sectionName,
     shoes,
@@ -83,6 +84,7 @@ export default function RankShoes({
                 {hasEnoughShoes && (
                     <RankForm
                         buttonText={buttonText}
+                        formName={formName}
                         initialShoes={initialShoes}
                         initialValues={initialValues}
                         shoesList={shoesList}

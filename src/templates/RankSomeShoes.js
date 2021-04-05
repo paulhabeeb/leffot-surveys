@@ -25,6 +25,7 @@ export default function RankSomeShoes({ data }) {
                 <RankShoesWithModal
                     buttonText={pageData.shoes_button_text}
                     description={pageData.shoes_section_description.raw}
+                    formName={uid}
                     requireEnoughShoes={false}
                     sectionName='section-one'
                     shoes={pageData.body}
