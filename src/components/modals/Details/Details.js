@@ -6,6 +6,8 @@ import { RichText } from 'prismic-reactjs'
 import * as styles from './Details.module.scss'
 import ImageGrid from './ImageGrid'
 
+ReactModal.setAppElement('#___gatsby')
+
 export default function Details({ isOpen, isSelected, setModal, shoe }) {
     const { actionComponent, name, description, images } = shoe
 
