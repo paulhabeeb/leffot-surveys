@@ -1,4 +1,4 @@
-require("dotenv").config()
+require('dotenv').config()
 
 module.exports = {
     plugins: [
@@ -8,14 +8,6 @@ module.exports = {
             options: {
                 sassOptions: {
                     includePaths: ['src/styles'],
-                },
-            },
-        },
-        {
-            resolve: 'gatsby-plugin-web-font-loader',
-            options: {
-                typekit: {
-                    id: process.env.TYPEKIT_ID,
                 },
             },
         },
@@ -33,14 +25,6 @@ module.exports = {
                     rank_some_shoes: require('./src/schemas/rank_some_shoes.json'),
                     success_page: require('./src/schemas/success_page.json'),
                     top_five_shoes: require('./src/schemas/top_five_shoes.json'),
-                },
-            },
-        },
-        {
-            resolve: 'gatsby-plugin-web-font-loader',
-            options: {
-                typekit: {
-                    id: process.env.TYPEKIT_ID,
                 },
             },
         },
