@@ -5,10 +5,16 @@
     display: grid;
     grid-auto-rows: 1fr;
     grid-gap: 3px;
+    margin-top: var(--spacing-double);
     width: 100%;
 
     @include breakpoint('small') {
         grid-template-columns: 1fr 1fr;
+    }
+
+    @include breakpoint('medium') {
+        margin-top: 0;
+        margin-left: var(--spacing-double);
     }
 }
 

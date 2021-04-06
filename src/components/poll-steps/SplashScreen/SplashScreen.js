@@ -1,9 +1,10 @@
 import React from 'react'
 import PropTypes from 'prop-types'
-import * as styles from './SplashPage.module.scss'
+
+import * as styles from './SplashScreen.module.scss'
 import { Layout, PageHeader } from '@components/common'
 
-export default function SplashPage({ description, title }) {
+export default function SplashScreen({ description, title }) {
     return (
         <Layout id='splash-page'>
             <div className={styles.container}>
@@ -17,7 +18,7 @@ export default function SplashPage({ description, title }) {
     )
 }
 
-SplashPage.propTypes = {
+SplashScreen.propTypes = {
     description: PropTypes.array,
     title: PropTypes.array,
 }

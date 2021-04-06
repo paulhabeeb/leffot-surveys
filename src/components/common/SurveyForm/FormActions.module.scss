@@ -1,0 +1,27 @@
+@import 'mixins';
+
+.actions {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    padding-top: var(--spacing-single);
+
+    @include breakpoint('small') {
+        flex-direction: row;
+    }
+
+    button {
+        margin: var(--spacing-half) 0;
+
+        @include breakpoint('small') {
+            margin: 0 var(--spacing-half);
+        }
+    }
+}
+
+.errors {
+    color: var(--color-red);
+    font-weight: var(--font-weight-sans-medium);
+    margin-top: var(--spacing-single);
+    text-align: center;
+}

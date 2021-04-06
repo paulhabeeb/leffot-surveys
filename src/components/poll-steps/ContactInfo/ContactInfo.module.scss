@@ -1,0 +1,27 @@
+@import 'mixins';
+
+.textInputContainer {
+    margin: 0 auto;
+    max-width: 600px;
+    width: 100%;
+}
+
+.tellUs {
+    font-family: var(--font-serif);
+    font-size: var(--font-size-large);
+    margin-bottom: var(--spacing-single);
+    text-align: center;
+}
+
+.flex {
+    display: flex;
+    flex-direction: column;
+
+    @include breakpoint('small') {
+        flex-direction: row;
+
+        div + div {
+            margin-left: var(--spacing-single);
+        }
+    }
+}

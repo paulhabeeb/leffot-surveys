@@ -124,6 +124,14 @@
                 "placeholder": "Poll UID"
             }
         },
+        "status": {
+            "type": "Select",
+            "config": {
+                "options": ["Upcoming", "Live", "Complete"],
+                "label": "Status",
+                "placeholder": "Status"
+            }
+        },
         "page_title": {
             "type": "Text",
             "config": {

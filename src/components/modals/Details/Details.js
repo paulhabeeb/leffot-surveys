@@ -50,9 +50,7 @@ export default function Details({ isOpen, isSelected, setModal, shoe }) {
                     <RichText render={description.raw} />
                     <div className={styles.actions}>{actionComponent}</div>
                 </div>
-                <div className={styles.imageGrid}>
-                    <ImageGrid images={images} />
-                </div>
+                <ImageGrid images={images} />
             </div>
         </ReactModal>
     )

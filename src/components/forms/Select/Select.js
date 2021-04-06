@@ -6,7 +6,7 @@ import cn from 'classnames'
 import * as styles from './Select.module.scss'
 import { ErrorMessage, InputWrapper } from '@components/forms'
 
-export default function RankItem({ name, options, placeholder }) {
+export default function Select({ name, options, placeholder }) {
     const slugName = name.replace(' ', '-').toLowerCase()
     const { values } = useFormikContext()
     const [field, meta] = useField({
@@ -47,7 +47,7 @@ export default function RankItem({ name, options, placeholder }) {
     )
 }
 
-RankItem.propTypes = {
+Select.propTypes = {
     name: PropTypes.string,
     options: PropTypes.array,
     placeholder: PropTypes.string,

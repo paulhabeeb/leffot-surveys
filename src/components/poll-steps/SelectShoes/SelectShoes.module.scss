@@ -1,12 +1,7 @@
 @import 'mixins';
 
 .container {
-    padding: var(--spacing-triple) var(--spacing-single);
-    width: 100%;
-
-    @include breakpoint('medium') {
-        padding: var(--spacing-triple);
-    }
+    margin-bottom: var(--spacing-single);
 }
 
 .itemGrid {

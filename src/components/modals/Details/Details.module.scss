@@ -45,19 +45,10 @@
 
 .title {
     font-size: var(--font-size-large);
+    line-height: 1.2;
     margin-bottom: var(--spacing-half);
 }
 
 .actions {
     margin-top: var(--spacing-single);
-}
-
-.imageGrid {
-    margin-top: var(--spacing-double);
-    width: 100%;
-
-    @include breakpoint('medium') {
-        margin-top: 0;
-        margin-left: var(--spacing-double);
-    }
 }

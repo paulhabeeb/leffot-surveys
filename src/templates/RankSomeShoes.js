@@ -2,12 +2,24 @@ import React from 'react'
 import PropTypes from 'prop-types'
 import { graphql } from 'gatsby'
 
-import { PageHelmet, SurveyWrapper } from '@components/common'
-import { RankShoesWithModal, SplashPage } from '@components/poll-steps'
+import {
+    PageHelmet,
+    PollNotAvailable,
+    SurveyForm,
+    SurveyWrapper,
+} from '@components/common'
+import {
+    ContactInfo,
+    RankShoesWithModal,
+    SplashScreen,
+} from '@components/poll-steps'
 
 export default function RankSomeShoes({ data }) {
-    const pageData = data.allPrismicRankSomeShoes.edges[0].node.data
-    const uid = data.allPrismicRankSomeShoes.edges[0].node.uid
+    const { data: pageData, uid } = data.allPrismicRankSomeShoes.edges[0].node
+
+    if (pageData.status === 'Upcoming' || pageData.status === 'Complete') {
+        return <PollNotAvailable status={pageData.status} uid={uid} />
+    }
 
     return (
         <main id='main'>
@@ -17,20 +29,24 @@ export default function RankSomeShoes({ data }) {
                 url={uid}
                 image={pageData.page_image.url}
             />
-            <SplashPage
+            <SplashScreen
                 description={pageData.poll_description.raw}
                 title={pageData.title.raw}
             />
             <SurveyWrapper>
-                <RankShoesWithModal
-                    buttonText={pageData.shoes_button_text}
-                    description={pageData.shoes_section_description.raw}
+                <SurveyForm
                     formName={uid}
-                    requireEnoughShoes={false}
-                    sectionName='section-one'
+                    maxSelections={pageData.body.length}
+                    minSelections={pageData.body.length}
                     shoes={pageData.body}
-                    title={pageData.shoe_section_title.raw}
-                />
+                >
+                    <RankShoesWithModal
+                        description={pageData.shoes_section_description.raw}
+                        shoes={pageData.body}
+                        title={pageData.shoe_section_title.raw}
+                    />
+                    <ContactInfo />
+                </SurveyForm>
             </SurveyWrapper>
         </main>
     )
@@ -47,25 +63,6 @@ export const query = graphql`
                 node {
                     uid
                     data {
-                        page_description
-                        title {
-                            raw
-                        }
-                        shoes_section_description {
-                            raw
-                        }
-                        shoes_button_text
-                        shoe_section_title {
-                            raw
-                        }
-                        poll_description {
-                            raw
-                        }
-                        page_title
-                        page_image {
-                            url
-                            alt
-                        }
                         body {
                             ... on PrismicRankSomeShoesBodyPollItem {
                                 items {
@@ -75,14 +72,34 @@ export const query = graphql`
                                     }
                                 }
                                 primary {
-                                    item_name {
+                                    item_description {
                                         raw
                                     }
-                                    item_description {
+                                    item_name {
                                         raw
                                     }
                                 }
                             }
+                        }
+                        page_description
+                        page_image {
+                            url
+                            alt
+                        }
+                        page_title
+                        poll_description {
+                            raw
+                        }
+                        shoes_button_text
+                        shoes_section_description {
+                            raw
+                        }
+                        shoe_section_title {
+                            raw
+                        }
+                        status
+                        title {
+                            raw
                         }
                     }
                 }

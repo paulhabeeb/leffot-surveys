@@ -1,4 +1,5 @@
+export { default as ContactInfo } from './ContactInfo'
 export { default as RankShoes } from './RankShoes'
 export { default as RankShoesWithModal } from './RankShoes/RankShoesWithModal'
 export { default as SelectShoes } from './SelectShoes'
-export { default as SplashPage } from './SplashPage'
+export { default as SplashScreen } from './SplashScreen'

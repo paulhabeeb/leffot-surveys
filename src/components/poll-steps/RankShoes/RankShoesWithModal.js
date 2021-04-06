@@ -3,16 +3,7 @@ import PropTypes from 'prop-types'
 import { Details } from '@components/modals'
 import { RankShoes } from '@components/poll-steps'
 
-export default function RankShoesWithModal({
-    buttonText,
-    description,
-    errorMessage,
-    formName,
-    requireEnoughShoes,
-    sectionName,
-    shoes,
-    title,
-}) {
+export default function RankShoesWithModal({ description, shoes, title }) {
     const [modal, setModal] = useState({
         isOpen: false,
         shoe: {
@@ -33,11 +24,7 @@ export default function RankShoesWithModal({
         <>
             <RankShoes
                 actionComponentFunction={setModal}
-                buttonText={buttonText}
-                formName={formName}
                 description={description}
-                requireEnoughShoes={requireEnoughShoes}
-                sectionName={sectionName}
                 shoes={shoes}
                 title={title}
             />
@@ -52,11 +39,7 @@ export default function RankShoesWithModal({
 }
 
 RankShoesWithModal.propTypes = {
-    buttonText: PropTypes.string,
     description: PropTypes.array,
-    errorMessage: PropTypes.array,
-    requireEnoughShoes: PropTypes.bool,
-    sectionName: PropTypes.string,
     shoes: PropTypes.array,
     title: PropTypes.array,
 }

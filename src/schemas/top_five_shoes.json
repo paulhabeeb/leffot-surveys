@@ -157,6 +157,28 @@
                 "placeholder": "Poll UID"
             }
         },
+        "status": {
+            "type": "Select",
+            "config": {
+                "options": ["Upcoming", "Live", "Complete"],
+                "label": "Status",
+                "placeholder": "Status"
+            }
+        },
+        "minselections": {
+            "type": "Number",
+            "config": {
+                "label": "Minimum number of selections",
+                "placeholder": "Minimum number"
+            }
+        },
+        "maxselections": {
+            "type": "Number",
+            "config": {
+                "label": "Maximum number of selections",
+                "placeholder": "Maximum number"
+            }
+        },
         "page_title": {
             "type": "Text",
             "config": {

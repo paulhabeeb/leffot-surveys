@@ -12,7 +12,6 @@ export default function PageHeader({
     wrapperStyles,
 }) {
     const wrapper = cn(styles.container, wrapperStyles)
-
     const plainTitle = RichText.asText(title)
 
     return (

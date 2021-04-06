@@ -1,3 +1,10 @@
+@import 'mixins';
+
 .container {
     margin-top: -200px;
+    padding: var(--spacing-triple) var(--spacing-single);
+
+    @include breakpoint('medium') {
+        padding: var(--spacing-triple);
+    }
 }
