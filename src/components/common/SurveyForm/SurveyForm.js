@@ -77,6 +77,13 @@ export default function SurveyForm({
         values,
         { resetForm, setStatus, setSubmitting }
     ) => {
+        const setSubmissionError = () => {
+            setStatus({
+                error:
+                    'There was a problem submitting the form. Please try again later.',
+            })
+        }
+
         try {
             const response = await axios({
                 method: 'post',
@@ -87,15 +94,18 @@ export default function SurveyForm({
                 data: getFormData(values),
             })
 
-            console.log(response)
-
-            navigate('/success')
+            // Form submission is so fast that we introduce a little lag
+            // so it seems like something actually getting *submitted*.
+            setTimeout(() => {
+                if (response.status === 200) {
+                    navigate('/success')
+                } else {
+                    setSubmissionError()
+                }
+            }, 400)
         } catch (error) {
             console.log(error)
-            setStatus({
-                error:
-                    'There was a problem submitting the form. Please try again later.',
-            })
+            setSubmissionError()
         }
     }
 
