@@ -4,6 +4,14 @@ module.exports = {
     plugins: [
         'gatsby-plugin-react-helmet',
         {
+            resolve: 'gatsby-plugin-matomo',
+            options: {
+                siteId: '3',
+                matomoUrl: 'https://stats.leffot.com',
+                siteUrl: 'https://surveys.leffot.com',
+            },
+        },
+        {
             resolve: 'gatsby-plugin-postcss',
             options: {
                 postCssPlugins: [require('autoprefixer')],
