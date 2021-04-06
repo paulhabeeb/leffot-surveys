@@ -5,6 +5,8 @@ import { Helmet } from 'react-helmet'
 export default function PageHelmet({ description, image, title, url }) {
     return (
         <Helmet>
+            <html lang='en' />
+
             {/* General tags */}
             {title && <title>{title}</title>}
             {description && <meta name='description' content={description} />}
