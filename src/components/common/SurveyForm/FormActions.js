@@ -11,16 +11,18 @@ export default function FormActions() {
         <>
             <div className={styles.actions}>
                 <Button
-                    label='Submit'
+                    disabled={isSubmitting}
                     kind='primary'
-                    type='submit'
+                    label='Submit'
                     isSubmitting={isSubmitting}
+                    type='submit'
                 />
                 <Button
-                    label='Reset form'
+                    disabled={isSubmitting}
                     kind='secondary'
-                    type='button'
+                    label='Reset form'
                     onClick={resetForm}
+                    type='button'
                 />
             </div>
             {status && status.error && (

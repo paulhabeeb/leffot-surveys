@@ -5,6 +5,7 @@ import * as styles from './Button.module.scss'
 import ClipLoader from 'react-spinners/ClipLoader'
 
 export default function Button({
+    disabled,
     error,
     kind,
     isSubmitting,
@@ -23,7 +24,7 @@ export default function Button({
                 className={className}
                 onClick={onClick}
                 type={type}
-                disabled={isSubmitting}
+                disabled={disabled}
             >
                 {isSubmitting ? (
                     <span className={styles.submitting}>
@@ -44,6 +45,7 @@ export default function Button({
 }
 
 Button.propTypes = {
+    disabled: PropTypes.bool,
     error: PropTypes.string,
     kind: PropTypes.string,
     isSubmitting: PropTypes.bool,
