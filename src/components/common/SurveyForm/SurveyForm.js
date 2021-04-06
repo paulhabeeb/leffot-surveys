@@ -41,11 +41,12 @@ export default function SurveyForm({
         comments: Yup.string(),
     }
 
+    const initialRankings = {}
     shoes.forEach(shoe => {
         const initValue = 'Select a rank'
         const name = RichText.asText(shoe.primary.item_name.raw)
 
-        initialValues[name] = initValue
+        initialRankings[name] = initValue
         validationSchema[name] = Yup.string()
             .notOneOf([initValue], 'Please select a rank')
             .required('Please select a rank')
@@ -73,10 +74,7 @@ export default function SurveyForm({
         return qs.stringify(formValues)
     }
 
-    const handleSubmit = async (
-        values,
-        { resetForm, setStatus, setSubmitting }
-    ) => {
+    const handleSubmit = async (values, { setStatus }) => {
         const setSubmissionError = () => {
             setStatus({
                 error:
@@ -102,7 +100,7 @@ export default function SurveyForm({
                 } else {
                     setSubmissionError()
                 }
-            }, 400)
+            }, 600)
         } catch (error) {
             console.log(error)
             setSubmissionError()
@@ -111,7 +109,10 @@ export default function SurveyForm({
 
     return (
         <Formik
-            initialValues={{ ...initialValues }}
+            initialValues={{
+                ...initialValues,
+                ...initialRankings,
+            }}
             validationSchema={Yup.object().shape(validationSchema)}
             onSubmit={handleSubmit}
         >
