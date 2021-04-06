@@ -8,7 +8,7 @@ function Image({ alt, url }) {
             className={styles.imageWrapper}
             style={{ backgroundImage: `url(${url}` }}
         >
-            <img src={url} alt={alt} className={styles.image} />
+            <img src={url} alt={alt || ''} className={styles.image} />
         </figure>
     )
 }

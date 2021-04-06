@@ -16,7 +16,7 @@ export default function RankItem({
         <li className={styles.rankItem}>
             <img
                 src={images[0].item_image.url}
-                alt={images[0].item_image.alt}
+                alt={images[0].item_image.alt || ''}
                 className={styles.image}
             />
             <div className={styles.details}>

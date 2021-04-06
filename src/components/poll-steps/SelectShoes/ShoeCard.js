@@ -39,7 +39,7 @@ export default function ShoeCard({ isSelected, onClick, setModal, shoe }) {
                 <img
                     className={styles.img}
                     src={shoe.items[0].item_image.url}
-                    alt={shoe.items[0].item_image.alt}
+                    alt={shoe.items[0].item_image.alt || ''}
                 />
             </div>
             <div>
