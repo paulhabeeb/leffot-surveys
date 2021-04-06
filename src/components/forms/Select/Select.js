@@ -15,14 +15,8 @@ export default function RankItem({ name, options, placeholder }) {
         label: slugName,
     })
 
-    const placeholderIsSelected = values[name] !== undefined ? false : true
     const placeholderEl = (
-        <option
-            disabled
-            selected={placeholderIsSelected}
-            key={0}
-            value={placeholder}
-        >
+        <option disabled key={0} value={placeholder}>
             {placeholder}
         </option>
     )
@@ -30,15 +24,9 @@ export default function RankItem({ name, options, placeholder }) {
     const optionFields = [placeholderEl]
     options.forEach(opt => {
         const disabled = Object.values(values).includes(opt)
-        const selected = values[name] === opt ? true : false
 
         optionFields.push(
-            <option
-                value={opt}
-                disabled={disabled}
-                selected={selected}
-                key={opt}
-            >
+            <option value={opt} disabled={disabled} key={opt}>
                 {opt}
             </option>
         )

@@ -44,12 +44,14 @@ export default function RankShoes({
     let shoesList = []
 
     if (shoes) {
+        const initValue = 'Select a rank'
+
         shoes.forEach(shoe => {
             const name = RichText.asText(shoe.primary.item_name.raw)
-            initialShoes[name] = undefined
-            validationSchema[name] = Yup.string().required(
-                'Please select a rank'
-            )
+            initialShoes[name] = initValue
+            validationSchema[name] = Yup.string()
+                .notOneOf([initValue], 'Please select a rank')
+                .required('Please select a rank')
         })
 
         shoesList = shoes.map((shoe, index) => {
@@ -66,8 +68,9 @@ export default function RankShoes({
                 <RankItem
                     actionComponent={actionComponent}
                     description={shoe.primary.item_description}
-                    name={RichText.asText(shoe.primary.item_name.raw)}
                     images={shoe.items}
+                    name={RichText.asText(shoe.primary.item_name.raw)}
+                    placeholder={initValue}
                     key={index}
                 />
             )

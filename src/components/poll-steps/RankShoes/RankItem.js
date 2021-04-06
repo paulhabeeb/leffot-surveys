@@ -4,7 +4,12 @@ import PropTypes from 'prop-types'
 import * as styles from './RankItem.module.scss'
 import { Select } from '@components/forms'
 
-export default function RankItem({ actionComponent, images, name }) {
+export default function RankItem({
+    actionComponent,
+    images,
+    name,
+    placeholder,
+}) {
     const options = ['1', '2', '3', '4', '5']
 
     return (
@@ -22,7 +27,7 @@ export default function RankItem({ actionComponent, images, name }) {
                 <Select
                     name={name}
                     options={options}
-                    placeholder='Select a rank'
+                    placeholder={placeholder}
                 />
             </div>
         </li>
@@ -33,4 +38,5 @@ RankItem.propTypes = {
     actionComponent: PropTypes.node,
     images: PropTypes.array,
     name: PropTypes.string,
+    placeholder: PropTypes.string,
 }

@@ -70,7 +70,9 @@ export default function RankForm({
     const hiddenInputs = []
     const numberOfHiddenInputs = Object.keys(initialShoes).length
     for (let i = 1; i <= numberOfHiddenInputs; i++) {
-        hiddenInputs.push(<input type='hidden' name={`rank-${i}`} value='' />)
+        hiddenInputs.push(
+            <input type='hidden' name={`rank-${i}`} value='' key={i} />
+        )
     }
 
     return (
