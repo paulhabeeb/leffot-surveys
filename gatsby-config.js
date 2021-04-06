@@ -28,5 +28,13 @@ module.exports = {
                 },
             },
         },
+        {
+            resolve: 'gatsby-plugin-web-font-loader',
+            options: {
+                typekit: {
+                    id: process.env.TYPEKIT_ID,
+                },
+            },
+        },
     ],
 }
