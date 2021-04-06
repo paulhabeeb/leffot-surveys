@@ -67,8 +67,24 @@ export const query = graphql`
                             ... on PrismicRankSomeShoesBodyPollItem {
                                 items {
                                     item_image {
-                                        url
-                                        alt
+                                        thumbnails {
+                                            medium {
+                                                alt
+                                                dimensions {
+                                                    height
+                                                    width
+                                                }
+                                                url
+                                            }
+                                            small {
+                                                alt
+                                                dimensions {
+                                                    height
+                                                    width
+                                                }
+                                                url
+                                            }
+                                        }
                                     }
                                 }
                                 primary {

@@ -82,8 +82,24 @@ export const query = graphql`
                             ... on PrismicTopFiveShoesBodyPollItem {
                                 items {
                                     item_image {
-                                        alt
-                                        url
+                                        thumbnails {
+                                            medium {
+                                                alt
+                                                dimensions {
+                                                    height
+                                                    width
+                                                }
+                                                url
+                                            }
+                                            small {
+                                                alt
+                                                dimensions {
+                                                    height
+                                                    width
+                                                }
+                                                url
+                                            }
+                                        }
                                     }
                                 }
                                 primary {

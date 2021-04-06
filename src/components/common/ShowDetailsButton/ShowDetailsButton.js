@@ -9,7 +9,6 @@ export default function ShowDetailsButton({ caption, setModal, shoe, styles }) {
             setModal({
                 isOpen: true,
                 shoe: {
-                    // actionComponent: addButton,
                     name: shoe.primary.item_name,
                     description: shoe.primary.item_description,
                     images: shoe.items,

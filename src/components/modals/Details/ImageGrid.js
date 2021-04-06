@@ -23,8 +23,12 @@ export default function ImageGrid({ images }) {
         <div className={styles.imageGrid}>
             {images.map((image, index) => (
                 <Image
-                    url={image.item_image.url}
-                    alt={image.item_image.alt}
+                    alt={image.item_image.thumbnails.medium.alt}
+                    height={
+                        image.item_image.thumbnails.medium.dimensions.height
+                    }
+                    url={image.item_image.thumbnails.medium.url}
+                    width={image.item_image.thumbnails.medium.dimensions.width}
                     key={index}
                 />
             ))}

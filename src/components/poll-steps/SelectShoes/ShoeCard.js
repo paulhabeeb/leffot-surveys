@@ -18,7 +18,9 @@ export default function ShoeCard({ isSelected, onClick, setModal, shoe }) {
     }
 
     const title = RichText.asText(shoe.primary.item_name.raw)
-    const wrapper = { backgroundImage: `url(${shoe.items[0].item_image.url})` }
+    const wrapper = {
+        backgroundImage: `url(${shoe.items[0].item_image.thumbnails.small.url})`,
+    }
     const addButton = (
         <AddButton
             handleClick={handleClick}
@@ -38,8 +40,16 @@ export default function ShoeCard({ isSelected, onClick, setModal, shoe }) {
             >
                 <img
                     className={styles.img}
-                    src={shoe.items[0].item_image.url}
-                    alt={shoe.items[0].item_image.alt || ''}
+                    alt={shoe.items[0].item_image.thumbnails.small.alt || ''}
+                    height={
+                        shoe.items[0].item_image.thumbnails.small.dimensions
+                            .height
+                    }
+                    src={shoe.items[0].item_image.thumbnails.small.url}
+                    width={
+                        shoe.items[0].item_image.thumbnails.small.dimensions
+                            .width
+                    }
                 />
             </div>
             <div>
