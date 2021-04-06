@@ -1,7 +1,7 @@
 import React, { useState } from 'react'
 import PropTypes from 'prop-types'
 import { Details } from '@components/modals'
-import { RankShoes } from '@components/poll-steps'
+import { RankShoes } from '@components/survey-steps'
 
 export default function RankShoesWithModal({ description, shoes, title }) {
     const [modal, setModal] = useState({

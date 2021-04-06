@@ -1,8 +1,8 @@
 {
-    "name": "leffot-poll",
+    "name": "leffot-surveys",
     "private": true,
-    "description": "To track customer opinion",
-    "version": "0.1.0",
+    "description": "To track and solicit customer opinions",
+    "version": "1.0.0",
     "scripts": {
         "build": "gatsby build",
         "develop": "gatsby develop",

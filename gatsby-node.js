@@ -15,7 +15,7 @@ exports.onCreateWebpackConfig = ({ actions }) => {
 
 exports.createPages = async ({ graphql, actions }) => {
     const { createPage } = actions
-    const createPollPage = (template, uid) => {
+    const createSurveyPage = (template, uid) => {
         createPage({
             path: `/${uid}`,
             component: path.resolve(__dirname, `src/templates/${template}.js`),
@@ -23,7 +23,7 @@ exports.createPages = async ({ graphql, actions }) => {
         })
     }
 
-    const pollFragment = `
+    const surveyFragment = `
         edges {
             node {
                 uid
@@ -31,22 +31,22 @@ exports.createPages = async ({ graphql, actions }) => {
         }
     `
 
-    const polls = await graphql(`
+    const surveys = await graphql(`
         query RankSomeShoesQuery {
             allPrismicRankSomeShoes {
-                ${pollFragment}
+                ${surveyFragment}
             }
             allPrismicTopFiveShoes {
-                ${pollFragment}
+                ${surveyFragment}
             }
         }
     `)
 
-    polls.data.allPrismicRankSomeShoes.edges.forEach(({ node }) => {
-        createPollPage('RankSomeShoes', node.uid)
+    surveys.data.allPrismicRankSomeShoes.edges.forEach(({ node }) => {
+        createSurveyPage('RankSomeShoes', node.uid)
     })
 
-    polls.data.allPrismicTopFiveShoes.edges.forEach(({ node }) => {
-        createPollPage('TopFiveShoes', node.uid)
+    surveys.data.allPrismicTopFiveShoes.edges.forEach(({ node }) => {
+        createSurveyPage('TopFiveShoes', node.uid)
     })
 }

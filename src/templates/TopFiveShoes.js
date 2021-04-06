@@ -4,8 +4,8 @@ import { graphql } from 'gatsby'
 
 import {
     PageHelmet,
-    PollNotAvailable,
     SurveyForm,
+    SurveyNotAvailable,
     SurveyWrapper,
 } from '@components/common'
 import {
@@ -13,14 +13,14 @@ import {
     RankShoes,
     SelectShoes,
     SplashScreen,
-} from '@components/poll-steps'
+} from '@components/survey-steps'
 
 export default function TopFiveShoes({ data }) {
     const { data: pageData, uid } = data.allPrismicTopFiveShoes.edges[0].node
     const [selections, setSelections] = useState([])
 
     if (pageData.status === 'Upcoming' || pageData.status === 'Complete') {
-        return <PollNotAvailable status={pageData.status} uid={uid} />
+        return <SurveyNotAvailable status={pageData.status} uid={uid} />
     }
 
     return (

@@ -4,21 +4,21 @@ import { graphql } from 'gatsby'
 
 import {
     PageHelmet,
-    PollNotAvailable,
     SurveyForm,
+    SurveyNotAvailable,
     SurveyWrapper,
 } from '@components/common'
 import {
     ContactInfo,
     RankShoesWithModal,
     SplashScreen,
-} from '@components/poll-steps'
+} from '@components/survey-steps'
 
 export default function RankSomeShoes({ data }) {
     const { data: pageData, uid } = data.allPrismicRankSomeShoes.edges[0].node
 
     if (pageData.status === 'Upcoming' || pageData.status === 'Complete') {
-        return <PollNotAvailable status={pageData.status} uid={uid} />
+        return <SurveyNotAvailable status={pageData.status} uid={uid} />
     }
 
     return (
