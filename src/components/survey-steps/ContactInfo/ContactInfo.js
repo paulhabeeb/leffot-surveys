@@ -28,7 +28,8 @@ export default function ContactInfo() {
                 status='Required'
             />
             <Checkbox name='joinEmailList'>
-                Join our mailing list to receive news, etc.
+                Join our email list to receive updates about new products,
+                sales, and more.
             </Checkbox>
             <Textarea
                 label='Leave a comment'
