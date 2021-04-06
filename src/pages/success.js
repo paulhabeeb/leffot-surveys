@@ -17,14 +17,16 @@ export default function Success({ data }) {
                 url={uid}
             />
             <Layout>
-                <PageHeader
-                    description={pageData.caption.raw}
-                    isH1={true}
-                    title={pageData.title.raw}
-                />
-                <a href={pageData.link.url} className={styles.shop}>
-                    {pageData.link_label}
-                </a>
+                <div className={styles.container}>
+                    <PageHeader
+                        description={pageData.caption.raw}
+                        isH1={true}
+                        title={pageData.title.raw}
+                    />
+                    <a href={pageData.link.url} className={styles.shop}>
+                        {pageData.link_label}
+                    </a>
+                </div>
             </Layout>
         </main>
     )
