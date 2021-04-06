@@ -23,7 +23,7 @@ export default function ContactInfo() {
             <TextInput
                 label='Email address'
                 name='email'
-                type='text'
+                type='email'
                 placeholder='you@example.com'
                 status='Required'
             />
