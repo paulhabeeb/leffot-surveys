@@ -1,5 +1,6 @@
 import React from 'react'
 import PropTypes from 'prop-types'
+
 import * as styles from './SectionTitle.module.scss'
 import { PageHeader } from '@components/common'
 

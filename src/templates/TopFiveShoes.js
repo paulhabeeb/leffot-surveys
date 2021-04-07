@@ -1,6 +1,7 @@
 import React, { useState } from 'react'
 import PropTypes from 'prop-types'
 import { graphql } from 'gatsby'
+import { setThemeColors } from '@lib/setThemeColors'
 
 import {
     PageHelmet,
@@ -22,6 +23,17 @@ export default function TopFiveShoes({ data }) {
     if (pageData.status === 'Upcoming' || pageData.status === 'Complete') {
         return <SurveyNotAvailable status={pageData.status} uid={uid} />
     }
+
+    setThemeColors(
+        {
+            background: pageData.splash_screen_background_color,
+            text: pageData.splash_screen_text_color,
+        },
+        {
+            background: pageData.section_title_background_color,
+            text: pageData.section_title_text_color,
+        }
+    )
 
     return (
         <main id='main'>
@@ -125,6 +137,8 @@ export const query = graphql`
                         poll_description {
                             raw
                         }
+                        section_title_background_color
+                        section_title_text_color
                         shoes_button_text
                         shoes_section_description {
                             raw
@@ -132,6 +146,8 @@ export const query = graphql`
                         shoe_section_title {
                             raw
                         }
+                        splash_screen_background_color
+                        splash_screen_text_color
                         status
                         submit_button_text
                         title {

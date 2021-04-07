@@ -4,7 +4,6 @@
     padding: var(--spacing-triple) var(--spacing-single);
 
     @include breakpoint('small') {
-        color: var(--color-white);
         padding: var(--spacing-triple) var(--spacing-double);
     }
 

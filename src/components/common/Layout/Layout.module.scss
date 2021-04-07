@@ -2,30 +2,10 @@
 
 .container {
     align-items: center;
-    border: var(--spacing-half) solid transparent;
+    background-color: var(--splash-screen-bg, var(--color-white));
+    color: var(--splash-screen-text, var(--color-not-black));
     display: flex;
     flex-direction: column;
     justify-content: center;
     min-height: 100vh;
-
-    @include breakpoint('small') {
-        border-width: var(--spacing-single);
-    }
-
-    &.whiteBorder {
-        border-color: var(--color-primary);
-
-        @include breakpoint('small') {
-            background-color: var(--color-primary);
-            border-color: var(--color-white);
-        }
-    }
-
-    &.darkGreyBorder {
-        border-color: var(--color-dark-grey);
-    }
-
-    &.primaryBorder {
-        border-color: var(--color-primary);
-    }
 }

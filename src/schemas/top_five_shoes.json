@@ -15,6 +15,18 @@
                 "label": "Poll description",
                 "placeholder": "Poll description"
             }
+        },
+        "splash_screen_background_color": {
+            "type": "Color",
+            "config": {
+                "label": "Splash Screen Background Color"
+            }
+        },
+        "splash_screen_text_color": {
+            "type": "Color",
+            "config": {
+                "label": "Splash Screen Text Color (may be overridden if not accessible)"
+            }
         }
     },
     "Shoes": {
@@ -32,6 +44,18 @@
                 "multi": "paragraph, preformatted, heading1, heading2, heading3, heading4, heading5, heading6, strong, em, hyperlink, image, embed, list-item, o-list-item, rtl",
                 "label": "Section description",
                 "placeholder": "Page description"
+            }
+        },
+        "section_title_background_color": {
+            "type": "Color",
+            "config": {
+                "label": "Section Title Background Color"
+            }
+        },
+        "section_title_text_color": {
+            "type": "Color",
+            "config": {
+                "label": "Section Title Text Color (may be overridden if not accessible)"
             }
         },
         "shoes_button_text": {
