@@ -20,10 +20,6 @@ export default function TopFiveShoes({ data }) {
     const { data: pageData, uid } = data.allPrismicTopFiveShoes.edges[0].node
     const [selections, setSelections] = useState([])
 
-    if (pageData.status === 'Upcoming' || pageData.status === 'Complete') {
-        return <SurveyNotAvailable status={pageData.status} uid={uid} />
-    }
-
     setThemeColors(
         {
             background: pageData.splash_screen_background_color,
@@ -34,6 +30,10 @@ export default function TopFiveShoes({ data }) {
             text: pageData.section_title_text_color,
         }
     )
+
+    if (pageData.status === 'Upcoming' || pageData.status === 'Complete') {
+        return <SurveyNotAvailable status={pageData.status} uid={uid} />
+    }
 
     return (
         <main id='main'>

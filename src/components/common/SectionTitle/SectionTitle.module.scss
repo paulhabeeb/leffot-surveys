@@ -5,4 +5,8 @@
     margin-bottom: var(--spacing-double);
     padding: var(--spacing-double) var(--spacing-single) var(--spacing-two-thirds);
     text-align: center;
+
+    a {
+        color: var(--section-title-link, var(--color-primary));
+    }
 }

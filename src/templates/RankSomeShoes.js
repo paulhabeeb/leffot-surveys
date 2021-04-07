@@ -18,10 +18,6 @@ import {
 export default function RankSomeShoes({ data }) {
     const { data: pageData, uid } = data.allPrismicRankSomeShoes.edges[0].node
 
-    if (pageData.status === 'Upcoming' || pageData.status === 'Complete') {
-        return <SurveyNotAvailable status={pageData.status} uid={uid} />
-    }
-
     setThemeColors(
         {
             background: pageData.splash_screen_background_color,
@@ -32,6 +28,10 @@ export default function RankSomeShoes({ data }) {
             text: pageData.section_title_text_color,
         }
     )
+
+    if (pageData.status === 'Upcoming' || pageData.status === 'Complete') {
+        return <SurveyNotAvailable status={pageData.status} uid={uid} />
+    }
 
     return (
         <main id='main'>
