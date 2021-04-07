@@ -17,8 +17,9 @@ import {
 } from '@components/survey-steps'
 
 export default function TopFiveShoes({ data }) {
-    const { data: pageData, uid } = data.allPrismicTopFiveShoes.edges[0].node
+    const [isReady, setIsReady] = useState(false)
     const [selections, setSelections] = useState([])
+    const { data: pageData, uid } = data.allPrismicTopFiveShoes.edges[0].node
 
     useEffect(() => {
         setThemeColors(
@@ -31,7 +32,12 @@ export default function TopFiveShoes({ data }) {
                 text: pageData.section_title_text_color,
             }
         )
+        setIsReady(true)
     }, [pageData])
+
+    if (!isReady) {
+        return null
+    }
 
     if (pageData.status === 'Upcoming' || pageData.status === 'Complete') {
         return <SurveyNotAvailable status={pageData.status} uid={uid} />

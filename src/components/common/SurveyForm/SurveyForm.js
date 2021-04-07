@@ -93,7 +93,7 @@ export default function SurveyForm({
             })
 
             // Form submission is so fast that we introduce a little lag
-            // so it seems like something actually getting *submitted*.
+            // so it seems like something is actually getting *submitted*.
             setTimeout(() => {
                 if (response.status === 200) {
                     navigate('/success')

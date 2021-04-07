@@ -1,4 +1,4 @@
-import React, { useEffect } from 'react'
+import React, { useEffect, useState } from 'react'
 import PropTypes from 'prop-types'
 import { graphql } from 'gatsby'
 import { setThemeColors } from '@lib/setThemeColors'
@@ -16,6 +16,7 @@ import {
 } from '@components/survey-steps'
 
 export default function RankSomeShoes({ data }) {
+    const [isReady, setIsReady] = useState(false)
     const { data: pageData, uid } = data.allPrismicRankSomeShoes.edges[0].node
 
     useEffect(() => {
@@ -29,7 +30,12 @@ export default function RankSomeShoes({ data }) {
                 text: pageData.section_title_text_color,
             }
         )
+        setIsReady(true)
     }, [pageData])
+
+    if (!isReady) {
+        return null
+    }
 
     if (pageData.status === 'Upcoming' || pageData.status === 'Complete') {
         return <SurveyNotAvailable status={pageData.status} uid={uid} />
