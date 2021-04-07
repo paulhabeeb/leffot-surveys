@@ -12,6 +12,11 @@
     color: var(--color-dark-grey);
     font-size: var(--font-size-small);
     padding: 0;
+    text-decoration: underline;
+
+    &:hover {
+        text-decoration: none;
+    }
 }
 
 .error {

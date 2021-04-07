@@ -28,18 +28,19 @@
 }
 
 .details {
-    max-width: 200px;
+    max-width: 500px;
     width: 100%;
 
     @include breakpoint('medium') {
         max-height: calc(100vh - 20px - var(--spacing-double));
+        max-width: 200px;
         position: sticky;
         top: 0;
     }
 
     ul {
         list-style: disc;
-        margin-left: var(--spacing-single);
+        margin: var(--spacing-single) 0 var(--spacing-single) var(--spacing-single);
     }
 }
 

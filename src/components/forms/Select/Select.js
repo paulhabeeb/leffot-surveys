@@ -4,7 +4,7 @@ import { useField, useFormikContext } from 'formik'
 
 import cn from 'classnames'
 import * as styles from './Select.module.scss'
-import { ErrorMessage, InputWrapper } from '@components/forms'
+import { ErrorMessage, InputLabel, InputWrapper } from '@components/forms'
 
 export default function Select({ name, options, placeholder }) {
     const slugName = name.replace(' ', '-').toLowerCase()
@@ -34,8 +34,14 @@ export default function Select({ name, options, placeholder }) {
 
     return (
         <InputWrapper>
+            <InputLabel
+                label={`Rank ${name}`}
+                id={slugName}
+                isVisuallyHidden={true}
+            />
             <select
                 {...field}
+                id={slugName}
                 className={cn(styles.selectRank, {
                     [styles.errorBorder]: meta.touched && meta.error,
                 })}

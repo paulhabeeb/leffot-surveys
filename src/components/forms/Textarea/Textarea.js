@@ -15,6 +15,7 @@ export default function Textarea({ label, status, ...props }) {
             <textarea
                 {...field}
                 {...props}
+                id={props.id || props.name}
                 className={cn(styles.input, {
                     [styles.errorBorder]: meta.touched && meta.error,
                 })}
