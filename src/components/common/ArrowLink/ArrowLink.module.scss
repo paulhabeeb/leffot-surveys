@@ -1,0 +1,24 @@
+.link {
+    font-size: var(--font-size-medium);
+    font-weight: var(--font-weight-sans-bold);
+
+    &:hover {
+        text-decoration: none;
+
+        &::after {
+            transform: rotate(45deg) translate(2px, -2px);
+        }
+    }
+
+    &::after {
+        border-right: 2px solid var(--color-primary);
+        border-top: 2px solid var(--color-primary);
+        content: '';
+        display: inline-block;
+        height: 8px;
+        margin-left: var(--spacing-third);
+        transform: rotate(45deg);
+        transition: all 200ms ease;
+        width: 8px;
+    }
+}

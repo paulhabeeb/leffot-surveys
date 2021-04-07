@@ -13,26 +13,3 @@
     font-size: var(--font-size-medium);
     margin-bottom: var(--spacing-double);
 }
-
-.link {
-    font-size: var(--font-size-medium);
-    font-weight: var(--font-weight-sans-bold);
-
-    &:hover {
-        text-decoration: none;
-    }
-
-    &.withArrow {
-        &::before {
-            border-left: 2px solid var(--color-primary);
-            border-top: 2px solid var(--color-primary);
-            content: '';
-            display: inline-block;
-            height: 6px;
-            margin-right: var(--spacing-quarter);
-            transform: rotate(-45deg);
-            vertical-align: middle;
-            width: 6px;
-        }
-    }
-}
