@@ -3,7 +3,7 @@ import PropTypes from 'prop-types'
 import { graphql } from 'gatsby'
 
 import * as styles from './Success.module.scss'
-import { Layout, PageHeader, PageHelmet } from '@components/common'
+import { PageHeader, PageHelmet } from '@components/common'
 
 export default function Success({ data }) {
     const pageData = data.prismicSuccessPage.data
@@ -16,18 +16,16 @@ export default function Success({ data }) {
                 description={pageData.page_description}
                 url={uid}
             />
-            <Layout>
-                <div className={styles.container}>
-                    <PageHeader
-                        description={pageData.caption.raw}
-                        isH1={true}
-                        title={pageData.title.raw}
-                    />
-                    <a href={pageData.link.url} className={styles.shop}>
-                        {pageData.link_label}
-                    </a>
-                </div>
-            </Layout>
+            <div className={styles.container}>
+                <PageHeader
+                    description={pageData.caption.raw}
+                    isH1={true}
+                    title={pageData.title.raw}
+                />
+                <a href={pageData.link.url} className={styles.shop}>
+                    {pageData.link_label}
+                </a>
+            </div>
         </main>
     )
 }
