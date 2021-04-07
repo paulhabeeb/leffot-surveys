@@ -1,12 +1,12 @@
 @import 'mixins';
 
 .container {
-    margin-bottom: var(--spacing-single);
+    margin-bottom: var(--spacing-triple);
 }
 
 .itemGrid {
     display: grid;
-    grid-gap: var(--spacing-two-thirds);
+    grid-gap: var(--spacing-double) var(--spacing-two-thirds);
     grid-template-columns: 1fr 1fr;
     margin: var(--spacing-single) 0;
 

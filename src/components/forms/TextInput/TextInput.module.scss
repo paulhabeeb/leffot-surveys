@@ -2,6 +2,6 @@
 
 .input {
     @extend %inputBase;
-    padding: .6em 1.9em .5em .8em;
+    padding: var(--spacing-third) var(--spacing-half);
     width: 100%;
 }

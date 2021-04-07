@@ -3,7 +3,7 @@
 .input {
     @extend %inputBase;
     min-height: 100px;
-    padding: var(--spacing-third);
+    padding: var(--spacing-third) var(--spacing-half);
     resize: vertical;
     width: 100%;
 }

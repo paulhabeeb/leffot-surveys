@@ -1,13 +1,13 @@
 @import 'mixins';
 
 .container {
-    padding: var(--spacing-triple) var(--spacing-single);
+    padding: var(--spacing-triple) var(--spacing-single) 150px;
 
     @include breakpoint('small') {
-        padding: var(--spacing-triple) var(--spacing-double);
+        padding: var(--spacing-triple) var(--spacing-double) 150px;
     }
 
     @include breakpoint('medium') {
-        padding: var(--spacing-double);
+        padding: var(--spacing-double) var(--spacing-double) 150px;
     }
 }
