@@ -1,4 +1,4 @@
-import React, { useState } from 'react'
+import React, { useEffect, useState } from 'react'
 import PropTypes from 'prop-types'
 import { graphql } from 'gatsby'
 import { setThemeColors } from '@lib/setThemeColors'
@@ -20,16 +20,18 @@ export default function TopFiveShoes({ data }) {
     const { data: pageData, uid } = data.allPrismicTopFiveShoes.edges[0].node
     const [selections, setSelections] = useState([])
 
-    setThemeColors(
-        {
-            background: pageData.splash_screen_background_color,
-            text: pageData.splash_screen_text_color,
-        },
-        {
-            background: pageData.section_title_background_color,
-            text: pageData.section_title_text_color,
-        }
-    )
+    useEffect(() => {
+        setThemeColors(
+            {
+                background: pageData.splash_screen_background_color,
+                text: pageData.splash_screen_text_color,
+            },
+            {
+                background: pageData.section_title_background_color,
+                text: pageData.section_title_text_color,
+            }
+        )
+    }, [pageData])
 
     if (pageData.status === 'Upcoming' || pageData.status === 'Complete') {
         return <SurveyNotAvailable status={pageData.status} uid={uid} />
