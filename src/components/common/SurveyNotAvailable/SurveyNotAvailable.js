@@ -2,7 +2,7 @@ import React from 'react'
 import PropTypes from 'prop-types'
 import { useStaticQuery, graphql } from 'gatsby'
 import { RichText } from 'prismic-reactjs'
-import { Layout, PageHeader, PageHelmet } from '@components/common'
+import { FullscreenLayout, PageHeader, PageHelmet } from '@components/common'
 
 export default function SurveyNotAvailable({ status, uid }) {
     const {
@@ -40,13 +40,13 @@ export default function SurveyNotAvailable({ status, uid }) {
     return (
         <main id='main'>
             <PageHelmet title={RichText.asText(title)} url={uid} />
-            <Layout id='survey-not-available'>
+            <FullscreenLayout id='survey-not-available'>
                 <PageHeader
                     description={description}
                     isH1={true}
                     title={title}
                 />
-            </Layout>
+            </FullscreenLayout>
         </main>
     )
 }

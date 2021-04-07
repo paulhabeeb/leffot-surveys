@@ -1,8 +1,8 @@
 import React from 'react'
 import PropTypes from 'prop-types'
-import * as styles from './Layout.module.scss'
+import * as styles from './FullscreenLayout.module.scss'
 
-export default function Layout({ children, id }) {
+export default function FullscreenLayout({ children, id }) {
     return (
         <section className={styles.container} id={id}>
             {children}
@@ -10,7 +10,7 @@ export default function Layout({ children, id }) {
     )
 }
 
-Layout.propTypes = {
+FullscreenLayout.propTypes = {
     children: PropTypes.node,
     id: PropTypes.string,
 }

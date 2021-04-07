@@ -2,11 +2,11 @@ import React from 'react'
 import PropTypes from 'prop-types'
 
 import * as styles from './SplashScreen.module.scss'
-import { Layout, PageHeader } from '@components/common'
+import { FullscreenLayout, PageHeader } from '@components/common'
 
 export default function SplashScreen({ description, title }) {
     return (
-        <Layout id='splash-page'>
+        <FullscreenLayout id='splash-page'>
             <div className={styles.container}>
                 <PageHeader
                     description={description}
@@ -14,7 +14,7 @@ export default function SplashScreen({ description, title }) {
                     title={title}
                 />
             </div>
-        </Layout>
+        </FullscreenLayout>
     )
 }
 

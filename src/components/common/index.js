@@ -1,6 +1,6 @@
 export { default as ArrowLink } from './ArrowLink'
 export { default as Button } from './Button'
-export { default as Layout } from './Layout'
+export { default as FullscreenLayout } from './FullscreenLayout'
 export { default as PageHeader } from './PageHeader'
 export { default as PageHelmet } from './PageHelmet'
 export { default as SectionTitle } from './SectionTitle'
