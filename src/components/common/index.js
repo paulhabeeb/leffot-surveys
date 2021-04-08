@@ -8,3 +8,7 @@ export { default as ShowDetailsButton } from './ShowDetailsButton'
 export { default as SurveyForm } from './SurveyForm'
 export { default as SurveyNotAvailable } from './SurveyNotAvailable'
 export { default as SurveyWrapper } from './SurveyWrapper'
+export {
+    default as ThemeContextProvider,
+    useThemeContext,
+} from './ThemeContext'

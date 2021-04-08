@@ -2,14 +2,17 @@ import React from 'react'
 import PropTypes from 'prop-types'
 
 import * as styles from './SectionTitle.module.scss'
-import { PageHeader } from '@components/common'
+import { PageHeader, useThemeContext } from '@components/common'
 
 export default function SectionTitle({ description, title }) {
+    const { sectionTitle } = useThemeContext()
+
     return (
         <PageHeader
+            backgroundColor={sectionTitle}
             description={description}
             title={title}
-            wrapperStyles={styles.sectionTitle}
+            wrapperClassName={styles.sectionTitle}
         />
     )
 }

@@ -1,13 +1,13 @@
-import React, { useEffect, useState } from 'react'
+import React from 'react'
 import PropTypes from 'prop-types'
 import { graphql } from 'gatsby'
-import { setThemeColors } from '@lib/setThemeColors'
 
 import {
     PageHelmet,
     SurveyForm,
     SurveyNotAvailable,
     SurveyWrapper,
+    ThemeContextProvider,
 } from '@components/common'
 import {
     ContactInfo,
@@ -16,25 +16,10 @@ import {
 } from '@components/survey-steps'
 
 export default function RankSomeShoes({ data }) {
-    const [isReady, setIsReady] = useState(false)
     const { data: pageData, uid } = data.allPrismicRankSomeShoes.edges[0].node
-
-    useEffect(() => {
-        setThemeColors(
-            {
-                background: pageData.splash_screen_background_color,
-                text: pageData.splash_screen_text_color,
-            },
-            {
-                background: pageData.section_title_background_color,
-                text: pageData.section_title_text_color,
-            }
-        )
-        setIsReady(true)
-    }, [pageData])
-
-    if (!isReady) {
-        return null
+    const theme = {
+        splashScreen: pageData.splash_screen_background_color,
+        sectionTitle: pageData.section_title_background_color,
     }
 
     if (pageData.status === 'Upcoming' || pageData.status === 'Complete') {
@@ -42,33 +27,35 @@ export default function RankSomeShoes({ data }) {
     }
 
     return (
-        <main id='main'>
-            <PageHelmet
-                title={pageData.page_title}
-                description={pageData.page_description}
-                url={uid}
-                image={pageData.page_image.url}
-            />
-            <SplashScreen
-                description={pageData.poll_description.raw}
-                title={pageData.title.raw}
-            />
-            <SurveyWrapper>
-                <SurveyForm
-                    formName={uid}
-                    maxSelections={pageData.body.length}
-                    minSelections={pageData.body.length}
-                    shoes={pageData.body}
-                >
-                    <RankShoesWithModal
-                        description={pageData.shoes_section_description.raw}
+        <ThemeContextProvider theme={theme}>
+            <main id='main'>
+                <PageHelmet
+                    title={pageData.page_title}
+                    description={pageData.page_description}
+                    url={uid}
+                    image={pageData.page_image.url}
+                />
+                <SplashScreen
+                    description={pageData.poll_description.raw}
+                    title={pageData.title.raw}
+                />
+                <SurveyWrapper>
+                    <SurveyForm
+                        formName={uid}
+                        maxSelections={pageData.body.length}
+                        minSelections={pageData.body.length}
                         shoes={pageData.body}
-                        title={pageData.shoe_section_title.raw}
-                    />
-                    <ContactInfo />
-                </SurveyForm>
-            </SurveyWrapper>
-        </main>
+                    >
+                        <RankShoesWithModal
+                            description={pageData.shoes_section_description.raw}
+                            shoes={pageData.body}
+                            title={pageData.shoe_section_title.raw}
+                        />
+                        <ContactInfo />
+                    </SurveyForm>
+                </SurveyWrapper>
+            </main>
+        </ThemeContextProvider>
     )
 }
 

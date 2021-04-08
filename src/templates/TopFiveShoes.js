@@ -1,13 +1,13 @@
-import React, { useEffect, useState } from 'react'
+import React, { useState } from 'react'
 import PropTypes from 'prop-types'
 import { graphql } from 'gatsby'
-import { setThemeColors } from '@lib/setThemeColors'
 
 import {
     PageHelmet,
     SurveyForm,
     SurveyNotAvailable,
     SurveyWrapper,
+    ThemeContextProvider,
 } from '@components/common'
 import {
     ContactInfo,
@@ -17,26 +17,11 @@ import {
 } from '@components/survey-steps'
 
 export default function TopFiveShoes({ data }) {
-    const [isReady, setIsReady] = useState(false)
     const [selections, setSelections] = useState([])
     const { data: pageData, uid } = data.allPrismicTopFiveShoes.edges[0].node
-
-    useEffect(() => {
-        setThemeColors(
-            {
-                background: pageData.splash_screen_background_color,
-                text: pageData.splash_screen_text_color,
-            },
-            {
-                background: pageData.section_title_background_color,
-                text: pageData.section_title_text_color,
-            }
-        )
-        setIsReady(true)
-    }, [pageData])
-
-    if (!isReady) {
-        return null
+    const theme = {
+        splashScreen: pageData.splash_screen_background_color,
+        sectionTitle: pageData.section_title_background_color,
     }
 
     if (pageData.status === 'Upcoming' || pageData.status === 'Complete') {
@@ -44,46 +29,48 @@ export default function TopFiveShoes({ data }) {
     }
 
     return (
-        <main id='main'>
-            <PageHelmet
-                title={pageData.page_title}
-                description={pageData.page_description}
-                url={uid}
-                image={pageData.page_image.url}
-            />
-            <SplashScreen
-                description={pageData.poll_description.raw}
-                title={pageData.title.raw}
-            />
-            <SurveyWrapper>
-                <SelectShoes
-                    buttonText={pageData.shoes_button_text}
-                    description={pageData.shoes_section_description.raw}
-                    linkDestination='section-two'
-                    sectionName='section-one'
-                    selectedShoes={selections}
-                    setSelectedShoes={setSelections}
-                    shoes={pageData.body}
-                    title={pageData.shoe_section_title.raw}
+        <ThemeContextProvider theme={theme}>
+            <main id='main'>
+                <PageHelmet
+                    title={pageData.page_title}
+                    description={pageData.page_description}
+                    url={uid}
+                    image={pageData.page_image.url}
                 />
-                <SurveyForm
-                    errorTitle={pageData.top_section_title.raw}
-                    errorMessage={pageData.not_enough_shoes.raw}
-                    formName={uid}
-                    maxSelections={pageData.maxselections}
-                    minSelections={pageData.minselections}
-                    shoes={selections}
-                >
-                    <RankShoes
-                        description={pageData.top_section_description.raw}
-                        sectionName='section-two'
-                        shoes={selections}
-                        title={pageData.top_section_title.raw}
+                <SplashScreen
+                    description={pageData.poll_description.raw}
+                    title={pageData.title.raw}
+                />
+                <SurveyWrapper>
+                    <SelectShoes
+                        buttonText={pageData.shoes_button_text}
+                        description={pageData.shoes_section_description.raw}
+                        linkDestination='section-two'
+                        sectionName='section-one'
+                        selectedShoes={selections}
+                        setSelectedShoes={setSelections}
+                        shoes={pageData.body}
+                        title={pageData.shoe_section_title.raw}
                     />
-                    <ContactInfo />
-                </SurveyForm>
-            </SurveyWrapper>
-        </main>
+                    <SurveyForm
+                        errorTitle={pageData.top_section_title.raw}
+                        errorMessage={pageData.not_enough_shoes.raw}
+                        formName={uid}
+                        maxSelections={pageData.maxselections}
+                        minSelections={pageData.minselections}
+                        shoes={selections}
+                    >
+                        <RankShoes
+                            description={pageData.top_section_description.raw}
+                            sectionName='section-two'
+                            shoes={selections}
+                            title={pageData.top_section_title.raw}
+                        />
+                        <ContactInfo />
+                    </SurveyForm>
+                </SurveyWrapper>
+            </main>
+        </ThemeContextProvider>
     )
 }
 
@@ -146,7 +133,6 @@ export const query = graphql`
                             raw
                         }
                         section_title_background_color
-                        section_title_text_color
                         shoes_button_text
                         shoes_section_description {
                             raw
@@ -155,7 +141,6 @@ export const query = graphql`
                             raw
                         }
                         splash_screen_background_color
-                        splash_screen_text_color
                         status
                         submit_button_text
                         title {

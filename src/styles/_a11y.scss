@@ -1,0 +1,9 @@
+%hasLightText {
+    &.hasLightText {
+        color: var(--color-white);
+
+        a {
+            color: var(--color-white);
+        }
+    }
+}

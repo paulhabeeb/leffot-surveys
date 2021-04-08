@@ -1,15 +1,12 @@
-@import 'mixins';
+@import 'a11y';
 
 .container {
     align-items: center;
-    background-color: var(--splash-screen-bg, var(--color-white));
-    color: var(--splash-screen-text, var(--color-not-black));
+    background-color: var(--color-white);
     display: flex;
     flex-direction: column;
     justify-content: center;
     min-height: 100vh;
 
-    a {
-        color: var(--splash-screen-link, var(--color-primary));
-    }
+    @extend %hasLightText;
 }

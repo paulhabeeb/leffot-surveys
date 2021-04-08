@@ -1,3 +1,4 @@
+@import 'a11y';
 @import 'mixins';
 
 .container {
@@ -8,6 +9,8 @@
     @include breakpoint('large') {
         max-width: 800px;
     }
+
+    @extend %hasLightText;
 }
 
 .title {

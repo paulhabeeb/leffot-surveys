@@ -2,11 +2,17 @@ import React from 'react'
 import PropTypes from 'prop-types'
 
 import * as styles from './SplashScreen.module.scss'
-import { FullscreenLayout, PageHeader } from '@components/common'
+import {
+    FullscreenLayout,
+    PageHeader,
+    useThemeContext,
+} from '@components/common'
 
 export default function SplashScreen({ description, title }) {
+    const { splashScreen } = useThemeContext()
+
     return (
-        <FullscreenLayout id='splash-page'>
+        <FullscreenLayout id='splash-page' backgroundColor={splashScreen}>
             <div className={styles.container}>
                 <PageHeader
                     description={description}
