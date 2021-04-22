@@ -1,16 +1,30 @@
 @import 'mixins';
 
+:global(.ReactModal__Overlay) {
+    opacity: 0;
+    transition: opacity 100ms ease;
+}
+
+:global(.ReactModal__Overlay--after-open) {
+    opacity: 1;
+}
+
+:global(.ReactModal__Overlay--before-close) {
+    opacity: 0;
+}
+
 .close {
-    position: absolute;
-    right: 0;
-    top: 0;
+    background-color: rgba(255, 255, 255, 0.9);
+    position: fixed;
+    right: 25px;
+    top: 20px;
+    z-index: 10;
 }
 
 .closeButton {
     font-size: 40px;
     position: relative;
     transition: all 200ms ease;
-    z-index: 10;
 
     &:hover {
         color: var(--color-medium-grey);
@@ -20,6 +34,7 @@
 .container {
     display: flex;
     flex-direction: column;
+    padding-bottom: var(--spacing-single);
 
     @include breakpoint('medium') {
         flex-direction: row;
@@ -40,7 +55,8 @@
 
     ul {
         list-style: disc;
-        margin: var(--spacing-single) 0 var(--spacing-single) var(--spacing-single);
+        margin: var(--spacing-single) 0 var(--spacing-single)
+            var(--spacing-single);
     }
 }
 

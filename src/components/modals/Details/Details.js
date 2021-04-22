@@ -20,16 +20,21 @@ export default function Details({ isOpen, isSelected, setModal, shoe }) {
 
     return (
         <ReactModal
+            closeTimeoutMS={100}
             isOpen={isOpen}
             onRequestClose={toggleModal}
             style={{
                 content: {
-                    border: '1px solid var(--color-light-grey)',
+                    border: 0,
                     borderRadius: 0,
-                    bottom: 0,
-                    left: 0,
-                    right: 0,
-                    top: 0,
+                    bottom: 20,
+                    boxShadow: '0 0 10px 2px rgba(30, 30, 30, .15)',
+                    left: 20,
+                    right: 20,
+                    top: 20,
+                },
+                overlay: {
+                    backgroundColor: 'rgba(31, 31, 31, 0.35)',
                 },
             }}
         >
