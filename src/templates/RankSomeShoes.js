@@ -28,13 +28,13 @@ export default function RankSomeShoes({ data }) {
 
     return (
         <ThemeContextProvider theme={theme}>
+            <PageHelmet
+                title={pageData.page_title}
+                description={pageData.page_description}
+                url={uid}
+                image={pageData.page_image.url}
+            />
             <main id='main'>
-                <PageHelmet
-                    title={pageData.page_title}
-                    description={pageData.page_description}
-                    url={uid}
-                    image={pageData.page_image.url}
-                />
                 <SplashScreen
                     description={pageData.poll_description.raw}
                     title={pageData.title.raw}

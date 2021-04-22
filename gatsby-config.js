@@ -2,6 +2,7 @@ require('dotenv').config()
 
 module.exports = {
     plugins: [
+        'gatsby-plugin-preload-fonts',
         'gatsby-plugin-react-helmet',
         {
             resolve: 'gatsby-plugin-matomo',
@@ -34,14 +35,6 @@ module.exports = {
             options: {
                 sassOptions: {
                     includePaths: ['src/styles'],
-                },
-            },
-        },
-        {
-            resolve: 'gatsby-plugin-web-font-loader',
-            options: {
-                typekit: {
-                    id: process.env.TYPEKIT_ID,
                 },
             },
         },

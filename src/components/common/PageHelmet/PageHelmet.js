@@ -13,6 +13,9 @@ export default function PageHelmet({ description, image, title, url }) {
             {image && <meta name='image' content={image} />}
             <link key='icon' rel='icon' href='/favicon.png' />
 
+            {/* Fonts */}
+            <link rel='stylesheet' href='https://use.typekit.net/bvl5rhi.css' />
+
             {/* OpenGraph tags */}
             {url && (
                 <meta
