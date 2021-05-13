@@ -13,6 +13,16 @@ export default function RankShoes({
     shoes,
     title,
 }) {
+    const rankOptions = []
+    const hiddenInputs = []
+    const numberOfHiddenInputs = Object.keys(shoes).length
+    for (let i = 1; i <= numberOfHiddenInputs; i++) {
+        rankOptions.push(i)
+        hiddenInputs.push(
+            <input type='hidden' name={`rank-${i}`} value='' key={i} />
+        )
+    }
+
     const shoesList = shoes.map((shoe, index) => {
         const actionComponent = (
             <ShowDetailsButton
@@ -29,19 +39,12 @@ export default function RankShoes({
                 description={shoe.primary.item_description}
                 images={shoe.items}
                 name={RichText.asText(shoe.primary.item_name.raw)}
+                options={rankOptions}
                 placeholder='Select a rank'
                 key={index}
             />
         )
     })
-
-    const hiddenInputs = []
-    const numberOfHiddenInputs = Object.keys(shoes).length
-    for (let i = 1; i <= numberOfHiddenInputs; i++) {
-        hiddenInputs.push(
-            <input type='hidden' name={`rank-${i}`} value='' key={i} />
-        )
-    }
 
     return (
         <div className={styles.container} id={sectionName}>

@@ -8,10 +8,9 @@ export default function RankItem({
     actionComponent,
     images,
     name,
+    options,
     placeholder,
 }) {
-    const options = ['1', '2', '3', '4', '5']
-
     return (
         <li className={styles.rankItem}>
             <img
@@ -40,5 +39,6 @@ RankItem.propTypes = {
     actionComponent: PropTypes.node,
     images: PropTypes.array,
     name: PropTypes.string,
+    options: PropTypes.array,
     placeholder: PropTypes.string,
 }
