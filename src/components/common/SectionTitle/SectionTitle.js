@@ -10,6 +10,7 @@ export default function SectionTitle({ description, title }) {
     return (
         <PageHeader
             backgroundColor={sectionTitle}
+            bodyWidth='narrow'
             description={description}
             title={title}
             wrapperClassName={styles.sectionTitle}
