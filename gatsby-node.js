@@ -1,14 +1,12 @@
 const path = require('path')
-const TsconfigPathsPlugin = require('tsconfig-paths-webpack-plugin')
 
 exports.onCreateWebpackConfig = ({ actions }) => {
     actions.setWebpackConfig({
         resolve: {
-            plugins: [
-                new TsconfigPathsPlugin({
-                    extensions: ['.js', '.jsx', '.ts', '.tsx'],
-                }),
-            ],
+            alias: {
+                '@components': path.resolve(__dirname, 'src/components'),
+                '@lib': path.resolve(__dirname, 'src/lib'),
+            },
         },
     })
 }
