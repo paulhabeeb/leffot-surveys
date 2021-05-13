@@ -17,7 +17,7 @@ export default function RankShoes({
     const hiddenInputs = []
     const numberOfHiddenInputs = Object.keys(shoes).length
     for (let i = 1; i <= numberOfHiddenInputs; i++) {
-        rankOptions.push(i)
+        rankOptions.push(i.toString())
         hiddenInputs.push(
             <input type='hidden' name={`rank-${i}`} value='' key={i} />
         )
