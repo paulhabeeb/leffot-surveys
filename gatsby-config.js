@@ -1,5 +1,6 @@
 module.exports = {
     plugins: [
+        'gatsby-plugin-image',
         'gatsby-plugin-preload-fonts',
         'gatsby-plugin-react-helmet',
         {

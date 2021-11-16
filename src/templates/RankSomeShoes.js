@@ -71,7 +71,7 @@ export const query = graphql`
                     uid
                     data {
                         body {
-                            ... on PrismicRankSomeShoesBodyPollItem {
+                            ... on PrismicRankSomeShoesDataBodyPollItem {
                                 items {
                                     item_image {
                                         thumbnails {
