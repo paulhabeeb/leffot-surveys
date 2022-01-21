@@ -74,37 +74,42 @@ export default function SurveyForm({
         return qs.stringify(formValues)
     }
 
-    const handleSubmit = async (values, { setStatus }) => {
+    const handleSubmit = (values, { setStatus, setSubmitting }) => {
         const setSubmissionError = () => {
+            setSubmitting(false)
             setStatus({
-                error:
-                    'There was a problem submitting the form. Please try again later.',
+                error: 'There was a problem submitting the form. Please try again later.',
             })
         }
 
-        try {
-            const response = await axios({
-                method: 'post',
-                url: '/',
-                headers: {
-                    'Content-Type': 'application/x-www-form-urlencoded',
-                },
-                data: getFormData(values),
-            })
+        const submitForm = async () => {
+            try {
+                const response = await axios({
+                    method: 'post',
+                    url: '/',
+                    headers: {
+                        'Content-Type': 'application/x-www-form-urlencoded',
+                    },
+                    data: getFormData(values),
+                })
 
-            // Form submission is so fast that we introduce a little lag
-            // so it seems like something is actually getting *submitted*.
-            setTimeout(() => {
-                if (response.status === 200) {
-                    navigate('/success')
-                } else {
-                    setSubmissionError()
-                }
-            }, 600)
-        } catch (error) {
-            console.log(error)
-            setSubmissionError()
+                // Form submission is so fast that we introduce a little lag
+                // so it seems like something is actually getting *submitted*.
+                setTimeout(() => {
+                    if (response.status === 200) {
+                        navigate('/success')
+                    } else {
+                        setSubmissionError()
+                    }
+                }, 600)
+            } catch (error) {
+                console.log(error)
+                setSubmissionError()
+            }
         }
+
+        setSubmitting(true)
+        submitForm()
     }
 
     return (
